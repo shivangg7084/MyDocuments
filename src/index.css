@@ -1,0 +1,42 @@
+/* Code blocks always use a dark theme, independent of the site's light/dark mode
+   (matches how GitHub, VS Code, and most doc sites render fenced code). */
+@import "highlight.js/styles/github-dark.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+::selection {
+  @apply bg-indigo-200 dark:bg-indigo-800;
+}
+
+/* Custom scrollbar, kept subtle */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: theme("colors.slate.300") transparent;
+}
+.dark * {
+  scrollbar-color: theme("colors.slate.700") transparent;
+}
+
+.hljs {
+  background: transparent !important;
+}

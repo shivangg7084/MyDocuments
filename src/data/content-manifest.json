@@ -1,0 +1,185 @@
+{
+  "generatedAt": "2026-08-22T07:35:12.911Z",
+  "root": {
+    "name": "Home",
+    "path": "",
+    "description": "A personal library of notes, videos, and references — organized by topic.",
+    "folders": [
+      {
+        "name": "Documents",
+        "path": "Documents",
+        "folders": [],
+        "files": []
+      },
+      {
+        "name": "Getting Started",
+        "path": "getting-started",
+        "description": "How this library is organized and how to add your own content.",
+        "folders": [
+          {
+            "name": "Files",
+            "path": "getting-started/files",
+            "folders": [],
+            "files": [
+              {
+                "name": "archive.zip",
+                "path": "getting-started/files/archive.zip",
+                "type": "other",
+                "ext": "zip",
+                "size": 827
+              },
+              {
+                "name": "budget.xlsx",
+                "path": "getting-started/files/budget.xlsx",
+                "type": "other",
+                "ext": "xlsx",
+                "size": 5374
+              },
+              {
+                "name": "config.json",
+                "path": "getting-started/files/config.json",
+                "type": "other",
+                "ext": "json",
+                "size": 190
+              },
+              {
+                "name": "report.docx",
+                "path": "getting-started/files/report.docx",
+                "type": "other",
+                "ext": "docx",
+                "size": 36739
+              },
+              {
+                "name": "roster.csv",
+                "path": "getting-started/files/roster.csv",
+                "type": "other",
+                "ext": "csv",
+                "size": 88
+              },
+              {
+                "name": "sample.txt",
+                "path": "getting-started/files/sample.txt",
+                "type": "other",
+                "ext": "txt",
+                "size": 188
+              }
+            ]
+          }
+        ],
+        "files": [
+          {
+            "name": "notes.md",
+            "path": "getting-started/notes.md",
+            "type": "markdown",
+            "ext": "md",
+            "size": 441,
+            "title": "Notes Example",
+            "excerpt": "A second markdown file in the same folder, so you can see how the folder page lists multiple files alongside the README. GitHub Pages serves static files only — there's no serversi"
+          },
+          {
+            "name": "README.md",
+            "path": "getting-started/README.md",
+            "type": "markdown",
+            "ext": "md",
+            "size": 1124,
+            "title": "Getting Started",
+            "excerpt": "How this library is organized and how to add your own content."
+          }
+        ]
+      },
+      {
+        "name": "Machine Learning",
+        "path": "machine-learning",
+        "description": "Notes and references on machine learning fundamentals.",
+        "folders": [
+          {
+            "name": "AWS",
+            "path": "machine-learning/aws",
+            "folders": [],
+            "files": [
+              {
+                "name": "README.md",
+                "path": "machine-learning/aws/README.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 6,
+                "title": "AWS"
+              }
+            ]
+          },
+          {
+            "name": "Images",
+            "path": "machine-learning/images",
+            "folders": [],
+            "files": [
+              {
+                "name": "diagram.svg",
+                "path": "machine-learning/images/diagram.svg",
+                "type": "image",
+                "ext": "svg",
+                "size": 783
+              }
+            ]
+          },
+          {
+            "name": "Supervised Learning",
+            "path": "machine-learning/supervised-learning",
+            "description": "Regression and classification notes.",
+            "folders": [],
+            "files": [
+              {
+                "name": "linear-regression.md",
+                "path": "machine-learning/supervised-learning/linear-regression.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 451,
+                "title": "Linear Regression",
+                "excerpt": "Linear regression models the relationship between a dependent variable and one or more independent variables using a straight line. Where m is the slope and c is the intercept. Giv"
+              },
+              {
+                "name": "README.md",
+                "path": "machine-learning/supervised-learning/README.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 123,
+                "title": "Supervised Learning",
+                "excerpt": "Regression and classification notes."
+              }
+            ]
+          }
+        ],
+        "files": [
+          {
+            "name": "README.md",
+            "path": "machine-learning/README.md",
+            "type": "markdown",
+            "ext": "md",
+            "size": 279,
+            "title": "Machine Learning",
+            "excerpt": "Notes and references on machine learning fundamentals."
+          }
+        ]
+      }
+    ],
+    "files": [
+      {
+        "name": "README.md",
+        "path": "README.md",
+        "type": "markdown",
+        "ext": "md",
+        "size": 274,
+        "title": "Welcome",
+        "excerpt": "A personal library of notes, videos, and references — organized by topic."
+      }
+    ]
+  },
+  "stats": {
+    "folders": 7,
+    "files": 14,
+    "videos": 0,
+    "markdown": 7,
+    "pdfs": 0,
+    "images": 1,
+    "other": 6
+  }
+}

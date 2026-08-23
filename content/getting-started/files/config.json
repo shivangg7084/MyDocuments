@@ -1,0 +1,11 @@
+{
+  "name": "file-library-demo",
+  "version": 2,
+  "enabled": true,
+  "owner": null,
+  "tags": ["demo", "content", "library"],
+  "limits": {
+    "maxFileSizeMb": 100,
+    "retries": 3
+  }
+}

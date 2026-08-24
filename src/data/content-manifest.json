@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T02:13:14.004Z",
+  "generatedAt": "2026-08-24T02:23:17.959Z",
   "root": {
     "name": "Home",
     "path": "",
@@ -15,7 +15,9 @@
             "path": "Documents/awk.md",
             "type": "markdown",
             "ext": "md",
-            "size": 0
+            "size": 53778,
+            "title": "AWK Programming — Complete Notes",
+            "excerpt": "awk is one of the most powerful textprocessing tools available in Linux/Unix. It is especially useful for columnbased data processing, filtering, searching, calculations, reporting"
           }
         ]
       },

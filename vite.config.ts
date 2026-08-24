@@ -8,7 +8,7 @@ import path from "node:path";
 const basePath = process.env.VITE_BASE_PATH ?? "/";
 
 export default defineConfig({
-  base: basePath,
+  base: '/MyDocuments/',
   plugins: [react()],
   resolve: {
     alias: {

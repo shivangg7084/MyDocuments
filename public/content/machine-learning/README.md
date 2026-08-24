@@ -14,17 +14,2715 @@ A curated set of **300 interview questions (50 per category)** to prepare for Da
 
 ## 1. Data Science
 
-### Statistics & Probability
-1. What is the Central Limit Theorem and why does it matter in practice?
-2. Explain the difference between Type I and Type II errors.
-3. What is a p-value? What common misconceptions exist about it?
-4. Explain the difference between correlation and causation with an example.
-5. What is the difference between population and sample variance formulas?
-6. Explain Bayes' Theorem with a real-world example.
-7. What is the difference between a confidence interval and a prediction interval?
-8. What is the Law of Large Numbers?
-9. Explain skewness and kurtosis and what they tell you about a distribution.
-10. What is the difference between parametric and non-parametric tests?
+
+---
+
+# 1. Central Limit Theorem (CLT)
+
+## What is the Central Limit Theorem?
+
+The **Central Limit Theorem** says:
+
+> If we repeatedly take sufficiently large random samples from a population, the distribution of the **sample mean** will become approximately normally distributed, regardless of the original population's distribution, provided certain conditions are satisfied.
+
+This is one of the most important ideas in statistics because it allows us to use **normal-distribution-based methods** even when the original data is not normally distributed.
+
+---
+
+## Simple intuition
+
+Suppose the population contains people's incomes:
+
+```text
+Population:
+₹10k, ₹12k, ₹15k, ₹18k, ₹20k, ₹25k, ₹100k, ...
+```
+
+Income is usually **right-skewed**, not normally distributed.
+
+Now:
+
+1. Randomly select 30 people.
+2. Calculate their average income.
+3. Repeat this thousands of times.
+4. Plot all those sample averages.
+
+You will generally get something resembling:
+
+```text
+             *
+           *   *
+         *       *
+       *           *
+     *               *
+----*-----------------*----
+             μ
+```
+
+The **individual incomes are not normally distributed**, but the **sample means approximately are**.
+
+---
+
+## Mathematical statement
+
+Suppose:
+
+```text
+X₁, X₂, ..., Xₙ
+```
+
+are independent observations from a population with:
+
+```text
+Mean = μ
+Variance = σ²
+```
+
+The sample mean is:
+
+[
+\bar X = \frac{X_1+X_2+\cdots+X_n}{n}
+]
+
+As (n) becomes sufficiently large:
+
+[
+\bar X \approx N\left(\mu,\frac{\sigma^2}{n}\right)
+]
+
+Therefore:
+
+[
+E[\bar X] = \mu
+]
+
+and
+
+[
+Var(\bar X)=\frac{\sigma^2}{n}
+]
+
+The standard deviation of the sampling distribution is:
+
+[
+SE(\bar X)=\frac{\sigma}{\sqrt n}
+]
+
+This is called the **Standard Error**.
+
+---
+
+## Why does CLT matter in practice?
+
+Because it allows us to:
+
+* construct confidence intervals
+* perform hypothesis tests
+* estimate population parameters
+* perform A/B testing
+* estimate average treatment effects
+* conduct statistical inference
+* make conclusions about populations using samples
+
+---
+
+## Example: A/B testing
+
+Suppose an e-commerce website wants to know whether a new checkout page increases average order value.
+
+You collect:
+
+```text
+Control group → 10,000 users
+Treatment group → 10,000 users
+```
+
+You calculate the average order value of each group.
+
+Even if individual purchases are highly skewed:
+
+```text
+₹100
+₹150
+₹200
+₹500
+₹10,000
+₹50,000
+...
+```
+
+the distribution of the **sample mean** can still be approximately normal for sufficiently large samples.
+
+This allows us to calculate:
+
+```text
+Difference in means
+Confidence interval
+p-value
+Statistical significance
+```
+
+---
+
+## Important distinction
+
+CLT does **not** say:
+
+> The original data becomes normally distributed.
+
+It says:
+
+> The distribution of a statistic, particularly the sample mean, becomes approximately normal as sample size increases.
+
+This distinction is extremely important in interviews.
+
+---
+
+## Conditions / assumptions
+
+The classical CLT requires conditions such as:
+
+### 1. Random sampling
+
+The sample should reasonably represent the population.
+
+### 2. Independence
+
+Observations should be independent, or dependence should be appropriately handled.
+
+### 3. Finite variance
+
+The underlying distribution should generally have finite variance for the standard CLT formulation.
+
+### 4. Sufficient sample size
+
+There is no universal number.
+
+A common rule of thumb is:
+
+```text
+n ≥ 30
+```
+
+but this is **not a law**.
+
+If the population is extremely skewed or heavy-tailed, you may need a much larger sample.
+
+---
+
+## CLT vs Law of Large Numbers
+
+| CLT                                           | Law of Large Numbers                        |
+| --------------------------------------------- | ------------------------------------------- |
+| Describes distribution of sample statistics   | Describes convergence of sample averages    |
+| Says sample mean becomes approximately normal | Says sample mean approaches population mean |
+| Useful for inference                          | Useful for consistency                      |
+| Gives approximate distribution                | Gives limiting behavior                     |
+
+---
+
+## Interview answer
+
+> The Central Limit Theorem states that for sufficiently large random samples, the sampling distribution of the sample mean approaches a normal distribution, regardless of the population's original distribution, assuming appropriate conditions such as independence and finite variance. This matters because it allows us to perform statistical inference, construct confidence intervals, and conduct hypothesis tests using approximate normality.
+
+---
+
+# 2. Type I and Type II Errors
+
+Whenever we perform hypothesis testing, we make a decision about a population based on sample evidence.
+
+We define:
+
+```text
+H₀ = Null hypothesis
+H₁ = Alternative hypothesis
+```
+
+There are four possible combinations.
+
+| Reality  | Decision        | Result        |
+| -------- | --------------- | ------------- |
+| H₀ true  | Don't reject H₀ | Correct       |
+| H₀ true  | Reject H₀       | Type I error  |
+| H₀ false | Don't reject H₀ | Type II error |
+| H₀ false | Reject H₀       | Correct       |
+
+---
+
+# Type I Error
+
+A **Type I error** occurs when:
+
+> We reject the null hypothesis even though it is actually true.
+
+In simple language:
+
+> **False positive.**
+
+---
+
+## Example
+
+Suppose:
+
+```text
+H₀: New drug has no effect.
+H₁: New drug has an effect.
+```
+
+Reality:
+
+```text
+Drug actually has no effect.
+```
+
+But our statistical test says:
+
+```text
+Reject H₀
+```
+
+We incorrectly conclude that the drug works.
+
+That's a **Type I error**.
+
+---
+
+## Significance level α
+
+The probability of Type I error is represented by:
+
+[
+\alpha
+]
+
+Common values:
+
+```text
+α = 0.05
+α = 0.01
+α = 0.10
+```
+
+If:
+
+[
+\alpha=0.05
+]
+
+we accept a 5% significance level for the Type I error under the test's assumptions.
+
+---
+
+# Type II Error
+
+A **Type II error** occurs when:
+
+> We fail to reject the null hypothesis even though it is false.
+
+In simple language:
+
+> **False negative.**
+
+---
+
+## Example
+
+Reality:
+
+```text
+Drug actually works.
+```
+
+Our test says:
+
+```text
+Don't reject H₀.
+```
+
+We incorrectly conclude that there isn't enough evidence that the drug works.
+
+That's a **Type II error**.
+
+The probability is represented by:
+
+[
+\beta
+]
+
+---
+
+# Statistical Power
+
+Power is:
+
+[
+Power=1-\beta
+]
+
+It represents the probability of detecting an effect when a real effect exists.
+
+For example:
+
+```text
+β = 0.20
+```
+
+Then:
+
+[
+Power=1-0.20=0.80
+]
+
+So the test has **80% power**.
+
+---
+
+## How do we increase power?
+
+Generally:
+
+### Increase sample size
+
+[
+n\uparrow \Rightarrow SE\downarrow \Rightarrow Power\uparrow
+]
+
+### Increase effect size
+
+A larger real effect is easier to detect.
+
+### Reduce noise / variability
+
+Less variability makes effects easier to detect.
+
+### Increase α
+
+Using:
+
+```text
+α = 0.05 → α = 0.10
+```
+
+can increase power, but also increases the probability of Type I error.
+
+---
+
+## Medical example
+
+Imagine a cancer screening test.
+
+```text
+Reality:
+Cancer present
+Cancer absent
+```
+
+Test result:
+
+```text
+Positive
+Negative
+```
+
+### Type I error
+
+Person doesn't have cancer but test says:
+
+```text
+Positive
+```
+
+False positive.
+
+### Type II error
+
+Person has cancer but test says:
+
+```text
+Negative
+```
+
+False negative.
+
+---
+
+## Important interview distinction
+
+```text
+Type I  → False Positive → α
+Type II → False Negative → β
+Power   → 1 - β
+```
+
+---
+
+# 3. What is a p-value?
+
+The p-value is one of the **most misunderstood concepts in statistics**.
+
+## Definition
+
+A p-value is:
+
+> The probability, assuming the null hypothesis is true, of obtaining a test statistic at least as extreme as the one observed.
+
+Mathematically:
+
+[
+p=P(\text{data at least as extreme as observed}\mid H_0)
+]
+
+---
+
+## Example
+
+Suppose:
+
+```text
+H₀: New model has the same average accuracy as old model.
+H₁: New model has different accuracy.
+```
+
+We perform a statistical test and get:
+
+```text
+p = 0.02
+```
+
+If:
+
+```text
+α = 0.05
+```
+
+then:
+
+```text
+0.02 < 0.05
+```
+
+Therefore:
+
+```text
+Reject H₀
+```
+
+We have statistically significant evidence against the null hypothesis.
+
+---
+
+# What p-value does NOT mean
+
+### Wrong interpretation #1
+
+> "There is a 2% probability that H₀ is true."
+
+❌ Wrong.
+
+The p-value assumes (H_0) is true.
+
+It does **not** calculate:
+
+[
+P(H_0|data)
+]
+
+---
+
+### Wrong interpretation #2
+
+> "p = 0.02 means there is a 98% probability that H₁ is true."
+
+❌ Wrong.
+
+---
+
+### Wrong interpretation #3
+
+> "A small p-value means the effect is large."
+
+❌ Wrong.
+
+A tiny effect can have a very small p-value if the sample size is huge.
+
+---
+
+## Statistical significance vs practical significance
+
+Suppose:
+
+```text
+Old model accuracy = 90.00%
+New model accuracy = 90.01%
+```
+
+With millions of observations:
+
+```text
+p < 0.001
+```
+
+The difference may be statistically significant.
+
+But practically:
+
+```text
+Improvement = 0.01 percentage points
+```
+
+Maybe the improvement isn't useful enough to justify deployment costs.
+
+Therefore always distinguish:
+
+```text
+Statistical significance
+        vs
+Practical significance
+```
+
+---
+
+# p-value and α
+
+Usually:
+
+```text
+p < α
+```
+
+→ Reject (H_0)
+
+```text
+p ≥ α
+```
+
+→ Fail to reject (H_0)
+
+Notice the phrase:
+
+> **Fail to reject**
+
+rather than:
+
+> Accept H₀
+
+Because a non-significant result doesn't prove the null hypothesis is true.
+
+---
+
+# Example
+
+Suppose:
+
+```text
+H₀: Average delivery time = 30 minutes
+H₁: Average delivery time ≠ 30 minutes
+```
+
+Result:
+
+```text
+p = 0.03
+α = 0.05
+```
+
+Therefore:
+
+```text
+0.03 < 0.05
+```
+
+Reject (H_0).
+
+We have evidence that the average delivery time differs from 30 minutes.
+
+---
+
+# 4. Correlation vs Causation
+
+## Correlation
+
+Correlation measures the degree to which two variables move together.
+
+For Pearson correlation:
+
+[
+-1\le r\le1
+]
+
+where:
+
+```text
+r = +1 → Perfect positive correlation
+r =  0 → No linear correlation
+r = -1 → Perfect negative correlation
+```
+
+---
+
+## Example
+
+Suppose:
+
+```text
+Temperature ↑
+Ice cream sales ↑
+```
+
+There is positive correlation.
+
+But does eating ice cream cause higher temperature?
+
+Obviously:
+
+```text
+No.
+```
+
+A third variable exists:
+
+```text
+Temperature
+     ↓
+ ┌───┴────┐
+ ↓        ↓
+Ice cream  Cold drinks
+sales
+```
+
+Temperature is a **confounding variable**.
+
+---
+
+# Causation
+
+Causation means:
+
+> Changing X actually produces a change in Y.
+
+Example:
+
+```text
+Smoking → increases risk of lung cancer
+```
+
+Here we have evidence of a causal relationship.
+
+---
+
+# The classic correlation ≠ causation example
+
+Suppose data shows:
+
+```text
+Number of firefighters ↑
+        ↓
+Fire damage ↑
+```
+
+They are positively correlated.
+
+Does that mean:
+
+> Firefighters cause more damage?
+
+No.
+
+The actual relationship is:
+
+```text
+Fire severity
+   ↓       ↓
+Firefighters  Damage
+```
+
+A larger fire requires more firefighters and also causes more damage.
+
+---
+
+# Confounding variable
+
+A confounder is a variable that affects both variables being studied.
+
+Example:
+
+```text
+Ice cream sales
+      ↑
+      |
+Temperature
+      |
+      ↓
+Drowning incidents
+```
+
+Temperature affects both.
+
+---
+
+# Correlation coefficient
+
+Pearson correlation:
+
+[
+r=\frac{Cov(X,Y)}{\sigma_X\sigma_Y}
+]
+
+Important:
+
+> Correlation measures association, not necessarily causation.
+
+---
+
+# How can we establish causality?
+
+Common approaches include:
+
+### Randomized controlled experiments
+
+Randomly assign subjects to:
+
+```text
+Control
+Treatment
+```
+
+Randomization helps break systematic differences between groups.
+
+### A/B testing
+
+Very common in Data Science.
+
+```text
+Users
+ ↓
+Random assignment
+ ↙      ↘
+A        B
+ ↓        ↓
+Metric A  Metric B
+```
+
+### Causal inference
+
+Methods include:
+
+* randomized experiments
+* instrumental variables
+* difference-in-differences
+* regression discontinuity
+* propensity scores
+* causal graphs / DAGs
+
+---
+
+# 5. Population vs Sample Variance
+
+Variance measures how spread out observations are around the mean.
+
+---
+
+# Population variance
+
+If you have the **entire population**:
+
+[
+\sigma^2=\frac{\sum_{i=1}^{N}(x_i-\mu)^2}{N}
+]
+
+where:
+
+```text
+N = population size
+μ = population mean
+```
+
+---
+
+# Sample variance
+
+If you only have a sample:
+
+[
+s^2=\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}
+]
+
+where:
+
+```text
+n = sample size
+x̄ = sample mean
+```
+
+Notice:
+
+```text
+Population → N
+Sample     → n - 1
+```
+
+---
+
+# Why n - 1?
+
+This is called **Bessel's correction**.
+
+When estimating population variance using a sample, the sample mean is already estimated from the same observations.
+
+This causes the naive estimator:
+
+[
+\frac{\sum(x_i-\bar{x})^2}{n}
+]
+
+to systematically underestimate the population variance.
+
+Using:
+
+[
+n-1
+]
+
+corrects this bias.
+
+---
+
+# Degrees of freedom
+
+Why (n-1)?
+
+Suppose:
+
+```text
+n = 3
+```
+
+and sample mean is fixed.
+
+If we know:
+
+```text
+x₁
+x₂
+```
+
+then (x_3) is constrained because:
+
+[
+x_1+x_2+x_3=3\bar{x}
+]
+
+Therefore only:
+
+```text
+2
+```
+
+values can vary freely.
+
+Hence:
+
+[
+df=n-1
+]
+
+---
+
+# Example
+
+Data:
+
+```text
+2, 4, 6
+```
+
+Mean:
+
+[
+\bar{x}=4
+]
+
+Squared deviations:
+
+```text
+(2-4)² = 4
+(4-4)² = 0
+(6-4)² = 4
+```
+
+Sum:
+
+[
+8
+]
+
+### Population variance
+
+[
+\frac{8}{3}=2.667
+]
+
+### Sample variance
+
+[
+\frac{8}{2}=4
+]
+
+---
+
+# Interview trick
+
+If the question says:
+
+> "Calculate variance of these 5 values, and these 5 values represent the entire population."
+
+Use:
+
+[
+N
+]
+
+If it says:
+
+> "These 5 values are a sample from a larger population."
+
+Use:
+
+[
+n-1
+]
+
+---
+
+# 6. Bayes' Theorem
+
+Bayes' theorem allows us to update our belief about an event after receiving new evidence.
+
+---
+
+# Formula
+
+[
+P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+]
+
+Where:
+
+```text
+P(A|B) = Posterior
+P(B|A) = Likelihood
+P(A)   = Prior
+P(B)   = Evidence
+```
+
+---
+
+# Intuition
+
+Think:
+
+```text
+Prior belief
+     ↓
+New evidence
+     ↓
+Updated belief
+```
+
+---
+
+# Medical example
+
+Suppose a disease affects:
+
+```text
+1% of population
+```
+
+Therefore:
+
+[
+P(D)=0.01
+]
+
+Suppose a test has:
+
+```text
+Sensitivity = 99%
+Specificity = 95%
+```
+
+Therefore:
+
+[
+P(+|D)=0.99
+]
+
+And:
+
+[
+P(+|\neg D)=0.05
+]
+
+because:
+
+```text
+False positive rate = 1 - specificity
+                    = 1 - 0.95
+                    = 0.05
+```
+
+---
+
+## We want:
+
+[
+P(D|+)
+]
+
+Using Bayes:
+
+[
+P(D|+)=
+\frac{P(+|D)P(D)}
+{P(+)}
+]
+
+Calculate:
+
+[
+P(+)=P(+|D)P(D)+P(+|\neg D)P(\neg D)
+]
+
+[
+=(0.99)(0.01)+(0.05)(0.99)
+]
+
+[
+=0.0099+0.0495
+]
+
+[
+=0.0594
+]
+
+Therefore:
+
+[
+P(D|+)=\frac{0.0099}{0.0594}
+]
+
+[
+\approx0.1667
+]
+
+So:
+
+[
+\boxed{P(D|+)\approx16.67%}
+]
+
+---
+
+# Why is this surprising?
+
+The test is:
+
+```text
+99% sensitive
+95% specific
+```
+
+Yet after a positive result, the probability of actually having the disease is only around:
+
+```text
+16.7%
+```
+
+Why?
+
+Because the disease is rare.
+
+There are many more healthy people than sick people.
+
+---
+
+# Frequency interpretation
+
+Imagine:
+
+```text
+10,000 people
+```
+
+Disease prevalence:
+
+```text
+1%
+```
+
+So:
+
+```text
+100 sick
+9,900 healthy
+```
+
+Among the sick:
+
+```text
+99% test positive
+→ 99 positive
+```
+
+Among healthy:
+
+```text
+5% false positive
+→ 495 positive
+```
+
+Total positive:
+
+```text
+99 + 495 = 594
+```
+
+Actually sick among positives:
+
+```text
+99
+```
+
+Therefore:
+
+[
+\frac{99}{594}=16.67%
+]
+
+This is often easier to understand than the equation.
+
+---
+
+# Applications of Bayes
+
+Bayesian reasoning appears in:
+
+* spam detection
+* medical diagnosis
+* fraud detection
+* recommendation systems
+* machine learning
+* NLP
+* search engines
+* classification
+* probabilistic inference
+
+---
+
+# 7. Confidence Interval vs Prediction Interval
+
+These two are often confused.
+
+---
+
+# Confidence Interval
+
+A confidence interval estimates a **population parameter**.
+
+Example:
+
+> What is the average salary of software engineers?
+
+Suppose:
+
+```text
+Sample mean = ₹10 LPA
+95% CI = [₹9.5 LPA, ₹10.5 LPA]
+```
+
+The interval estimates the **population mean**.
+
+---
+
+# Prediction Interval
+
+A prediction interval predicts the value of a **future individual observation**.
+
+Example:
+
+> What salary might the next software engineer have?
+
+Suppose:
+
+```text
+95% Prediction Interval:
+₹5 LPA – ₹15 LPA
+```
+
+This is much wider because individual observations have additional variability.
+
+---
+
+# Why is prediction interval wider?
+
+Confidence interval uncertainty:
+
+```text
+Uncertainty in estimating population mean
+```
+
+Prediction interval uncertainty:
+
+```text
+Uncertainty in estimating population mean
++
+Individual-level randomness
+```
+
+Therefore:
+
+[
+PI > CI
+]
+
+in width, generally.
+
+---
+
+# Regression example
+
+Suppose:
+
+```text
+X = years of experience
+Y = salary
+```
+
+At:
+
+```text
+X = 5 years
+```
+
+We might estimate:
+
+```text
+Mean salary = ₹12 LPA
+```
+
+Confidence interval:
+
+```text
+₹11.5 – ₹12.5 LPA
+```
+
+This estimates the **average salary of all people with 5 years of experience** under the model.
+
+Prediction interval:
+
+```text
+₹8 – ₹16 LPA
+```
+
+This predicts the salary of **one particular future person**.
+
+---
+
+# Key difference
+
+| Confidence Interval                 | Prediction Interval                    |
+| ----------------------------------- | -------------------------------------- |
+| Estimates population mean/parameter | Predicts individual future observation |
+| Narrower                            | Wider                                  |
+| Parameter uncertainty               | Parameter + individual variability     |
+| Used for inference                  | Used for prediction                    |
+
+---
+
+# Important misconception about 95% CI
+
+A frequentist 95% confidence interval does **not technically mean**:
+
+> "There is a 95% probability that this particular interval contains the population mean."
+
+The population parameter is treated as fixed.
+
+The correct interpretation is:
+
+> If we repeatedly generated samples and constructed intervals using the same procedure, approximately 95% of those intervals would contain the true parameter.
+
+---
+
+# 8. Law of Large Numbers
+
+The Law of Large Numbers says:
+
+> As the number of independent observations increases, the sample average tends to get closer to the true population mean.
+
+---
+
+# Example: Coin flipping
+
+Fair coin:
+
+[
+P(H)=0.5
+]
+
+If we flip it:
+
+```text
+10 times
+```
+
+we might get:
+
+```text
+7 heads
+```
+
+Proportion:
+
+```text
+70%
+```
+
+If we flip:
+
+```text
+10,000 times
+```
+
+the proportion of heads will generally get much closer to:
+
+```text
+50%
+```
+
+---
+
+# Mathematical intuition
+
+Sample mean:
+
+[
+\bar X_n=\frac{1}{n}\sum_{i=1}^{n}X_i
+]
+
+As:
+
+[
+n\rightarrow\infty
+]
+
+we expect:
+
+[
+\bar X_n\rightarrow\mu
+]
+
+under the conditions of the relevant version of the LLN.
+
+---
+
+# Weak vs Strong Law
+
+### Weak Law of Large Numbers
+
+Says convergence occurs **in probability**.
+
+### Strong Law of Large Numbers
+
+Says convergence occurs **almost surely**.
+
+For most Data Science applications, understanding the basic concept is more important than memorizing the measure-theoretic definitions.
+
+---
+
+# CLT vs LLN
+
+This is a very common interview question.
+
+### LLN
+
+Answers:
+
+> What happens to the sample mean as sample size becomes very large?
+
+Answer:
+
+```text
+It approaches the population mean.
+```
+
+### CLT
+
+Answers:
+
+> What does the distribution of sample means look like for sufficiently large samples?
+
+Answer:
+
+```text
+Approximately normal.
+```
+
+---
+
+# Casino example
+
+Suppose a casino game has expected profit:
+
+```text
+₹10 per game
+```
+
+Over:
+
+```text
+10 games
+```
+
+the average profit might be:
+
+```text
+₹3
+```
+
+or:
+
+```text
+₹18
+```
+
+But over:
+
+```text
+1,000,000 games
+```
+
+the average profit will tend toward:
+
+```text
+₹10
+```
+
+This is the Law of Large Numbers.
+
+---
+
+# Important misconception
+
+LLN does **not** mean:
+
+> Every small sequence will balance itself.
+
+For example, after getting:
+
+```text
+10 heads in a row
+```
+
+the probability of heads on the next fair coin toss is still:
+
+```text
+50%
+```
+
+The coin doesn't "owe" you tails.
+
+This is the **gambler's fallacy**.
+
+---
+
+# 9. Skewness and Kurtosis
+
+These describe aspects of a distribution beyond its mean and variance.
+
+---
+
+# Skewness
+
+Skewness measures the **asymmetry** of a distribution.
+
+---
+
+## Positive skew / right skew
+
+The distribution has a long right tail.
+
+```text
+      *
+     ***
+    ****
+   *****
+  ******
+       ********
+-------------------->
+```
+
+Typical examples:
+
+* income
+* wealth
+* house prices
+* transaction values
+
+Usually:
+
+[
+Mean > Median
+]
+
+---
+
+## Negative skew / left skew
+
+Long tail toward the left.
+
+```text
+              *
+             ***
+            ****
+       ******
+   ******
+-------------------->
+```
+
+Often:
+
+[
+Mean < Median
+]
+
+---
+
+## Symmetric distribution
+
+For a perfectly symmetric distribution:
+
+[
+Skewness=0
+]
+
+For example, the normal distribution.
+
+---
+
+# Why skewness matters in Data Science
+
+Suppose:
+
+```text
+Salary:
+₹20k
+₹25k
+₹30k
+₹35k
+₹40k
+₹10 lakh
+```
+
+The ₹10 lakh value pulls the mean upward.
+
+Therefore:
+
+```text
+Mean → heavily affected
+Median → much more robust
+```
+
+For heavily skewed variables, Data Scientists may consider:
+
+```text
+Median
+Log transformation
+Robust statistics
+Quantile transformation
+```
+
+---
+
+# Kurtosis
+
+Kurtosis describes the behavior of the tails and, in common interpretations, the tendency toward extreme observations.
+
+The fourth standardized central moment is:
+
+[
+\frac{E[(X-\mu)^4]}{\sigma^4}
+]
+
+---
+
+# Types of kurtosis
+
+### Mesokurtic
+
+Normal distribution.
+
+Kurtosis:
+
+[
+3
+]
+
+when using the standard Pearson definition.
+
+### Leptokurtic
+
+Higher kurtosis than normal.
+
+Often associated with heavier tails and more extreme observations.
+
+### Platykurtic
+
+Lower kurtosis than normal.
+
+Often associated with lighter tails.
+
+---
+
+# Excess kurtosis
+
+Many statistical libraries report **excess kurtosis**:
+
+[
+Excess\ Kurtosis=Kurtosis-3
+]
+
+Therefore normal distribution:
+
+[
+Excess\ Kurtosis=0
+]
+
+---
+
+# Why kurtosis matters
+
+Suppose you're building a financial risk model.
+
+A variable may have:
+
+```text
+Mean = 0
+Standard deviation = 1
+```
+
+but still have many more extreme observations than a normal distribution.
+
+Kurtosis can help indicate this tail behavior.
+
+This matters in:
+
+* finance
+* anomaly detection
+* risk management
+* quality control
+* statistical modeling
+
+---
+
+# Important misconception
+
+Don't simply memorize:
+
+```text
+Kurtosis = peakedness
+```
+
+That's an oversimplification.
+
+A better modern interpretation is:
+
+> Kurtosis is particularly informative about tail heaviness and the frequency of extreme observations relative to a normal distribution.
+
+---
+
+# 10. Parametric vs Non-Parametric Tests
+
+This is a major Data Science interview topic.
+
+---
+
+# Parametric tests
+
+Parametric tests make assumptions about the underlying population distribution or its parameters.
+
+Common examples:
+
+```text
+t-test
+ANOVA
+Pearson correlation test
+Z-test
+```
+
+For example, a t-test typically relies on assumptions related to:
+
+* independence
+* appropriate measurement scale
+* approximate normality of the relevant quantity, especially for small samples
+* equal variance in the classical pooled two-sample t-test
+
+---
+
+# Non-parametric tests
+
+Non-parametric tests make fewer distributional assumptions.
+
+Examples:
+
+```text
+Mann-Whitney U
+Wilcoxon signed-rank
+Kruskal-Wallis
+Spearman rank correlation
+Chi-square tests
+```
+
+Important:
+
+> Non-parametric does NOT mean "no assumptions."
+
+They still have assumptions.
+
+---
+
+# Parametric vs Non-parametric
+
+| Feature                  | Parametric                       | Non-parametric                      |
+| ------------------------ | -------------------------------- | ----------------------------------- |
+| Distribution assumptions | More                             | Fewer                               |
+| Often works with means   | Yes                              | Often ranks/medians                 |
+| Data requirements        | Often stronger                   | Often more flexible                 |
+| Statistical power        | Often higher if assumptions hold | Can be better when assumptions fail |
+| Outlier sensitivity      | Often higher                     | Often lower                         |
+| Examples                 | t-test, ANOVA                    | Mann-Whitney, Kruskal-Wallis        |
+
+---
+
+# Example: Comparing two groups
+
+Suppose you want to compare salaries between:
+
+```text
+Group A → Engineers
+Group B → Analysts
+```
+
+---
+
+## Scenario 1: Approximately normal data
+
+Suppose:
+
+```text
+Salary distribution ≈ normal
+Observations independent
+```
+
+A two-sample t-test could be appropriate.
+
+Hypotheses:
+
+[
+H_0:\mu_A=\mu_B
+]
+
+[
+H_1:\mu_A\neq\mu_B
+]
+
+---
+
+## Scenario 2: Strongly skewed data
+
+Suppose salaries contain extreme values:
+
+```text
+₹4L
+₹5L
+₹6L
+₹7L
+₹8L
+₹50L
+₹2Cr
+```
+
+A t-test may still be usable under some conditions, particularly with sufficiently large samples, but if distributional assumptions are problematic and the scientific question is about distributional location/ranks, a non-parametric alternative such as Mann-Whitney may be considered.
+
+---
+
+# Mann-Whitney U Test
+
+Used for comparing two independent groups using ranks.
+
+Example:
+
+```text
+Group A:
+10, 20, 30
+
+Group B:
+40, 50, 60
+```
+
+Instead of directly comparing means, we rank all observations.
+
+The test evaluates whether one group's observations tend to be systematically larger than the other's.
+
+---
+
+# Important misconception about Mann-Whitney
+
+It is commonly described as a:
+
+> "Non-parametric test for comparing medians."
+
+That's not universally accurate.
+
+The Mann-Whitney test is fundamentally a **rank-based test** about stochastic ordering/distributional differences. Under additional assumptions, it can be interpreted as a test of a location/median shift.
+
+This distinction is useful in advanced interviews.
+
+---
+
+# Wilcoxon Signed-Rank Test
+
+Used for **paired/dependent observations**.
+
+Example:
+
+You measure employees' productivity:
+
+```text
+Before training
+After training
+```
+
+Data:
+
+```text
+Employee 1 → 60 → 70
+Employee 2 → 55 → 65
+Employee 3 → 80 → 82
+...
+```
+
+Because the observations are paired:
+
+```text
+Before ↔ After
+```
+
+A Wilcoxon signed-rank test may be appropriate when the paired differences don't satisfy assumptions for a paired t-test.
+
+---
+
+# Paired t-test vs Wilcoxon Signed-Rank
+
+| Paired t-test                                                     | Wilcoxon signed-rank             |
+| ----------------------------------------------------------------- | -------------------------------- |
+| Parametric                                                        | Non-parametric                   |
+| Works with mean differences                                       | Rank-based                       |
+| Assumes approximately normal paired differences for small samples | Fewer distributional assumptions |
+| Sensitive to extreme values                                       | Generally more robust            |
+
+---
+
+# Kruskal-Wallis Test
+
+Suppose you have **three or more independent groups**.
+
+Example:
+
+```text
+Method A
+Method B
+Method C
+```
+
+You want to determine whether their outcomes differ.
+
+Parametric alternative:
+
+```text
+One-way ANOVA
+```
+
+Non-parametric alternative:
+
+```text
+Kruskal-Wallis
+```
+
+---
+
+# ANOVA
+
+ANOVA stands for:
+
+> Analysis of Variance
+
+It compares means across multiple groups.
+
+Example:
+
+```text
+Model A accuracy
+Model B accuracy
+Model C accuracy
+```
+
+Hypothesis:
+
+[
+H_0:\mu_A=\mu_B=\mu_C
+]
+
+Alternative:
+
+> At least one population mean differs.
+
+---
+
+# Why not simply perform multiple t-tests?
+
+Suppose you have:
+
+```text
+A vs B
+A vs C
+B vs C
+```
+
+Each test has a chance of Type I error.
+
+Performing many tests increases the probability of getting at least one false positive.
+
+ANOVA provides an overall test before follow-up comparisons.
+
+---
+
+# Chi-Square Test
+
+Chi-square tests are commonly used with **categorical data**.
+
+Example:
+
+You want to determine whether:
+
+```text
+Gender
+```
+
+and:
+
+```text
+Product preference
+```
+
+are associated.
+
+Create a contingency table:
+
+|         | Product A | Product B |
+| ------- | --------: | --------: |
+| Group 1 |        50 |        30 |
+| Group 2 |        20 |        40 |
+
+The chi-square test evaluates whether the observed counts differ from what we'd expect under independence.
+
+---
+
+# Pearson vs Spearman Correlation
+
+### Pearson
+
+Measures:
+
+> Linear association.
+
+Sensitive to outliers.
+
+### Spearman
+
+Measures:
+
+> Monotonic association using ranks.
+
+More robust to certain forms of non-normality and outliers.
+
+Example:
+
+```text
+X ↑
+Y ↑
+```
+
+Even if the relationship is curved but consistently increasing:
+
+```text
+     *
+   *
+  *
+ *
+*
+----------------
+```
+
+Spearman can detect the monotonic relationship even when Pearson's linear correlation is not as strong.
+
+---
+
+# How do you choose a statistical test?
+
+Don't memorize only:
+
+```text
+Problem → Test
+```
+
+Instead ask these questions.
+
+---
+
+## Step 1 — What type of variable?
+
+```text
+Numerical?
+Categorical?
+Ordinal?
+```
+
+---
+
+## Step 2 — How many groups?
+
+```text
+1
+2
+3+
+```
+
+---
+
+## Step 3 — Independent or paired?
+
+Independent:
+
+```text
+Group A people ≠ Group B people
+```
+
+Paired:
+
+```text
+Same people before/after
+```
+
+---
+
+## Step 4 — What is the question?
+
+Are you comparing:
+
+```text
+Means?
+Distributions?
+Proportions?
+Association?
+Correlation?
+```
+
+---
+
+## Step 5 — Are assumptions reasonable?
+
+Check things such as:
+
+```text
+Independence
+Normality
+Equal variances
+Sample size
+Outliers
+Measurement scale
+```
+
+---
+
+# Statistical Test Cheat Sheet
+
+| Problem                                   | Common choice                 |
+| ----------------------------------------- | ----------------------------- |
+| One population mean                       | One-sample t-test             |
+| Two independent means                     | Independent two-sample t-test |
+| Two paired means                          | Paired t-test                 |
+| 3+ independent means                      | ANOVA                         |
+| 3+ repeated/related means                 | Repeated-measures ANOVA       |
+| Two independent groups, rank-based        | Mann-Whitney U                |
+| Two paired groups, rank-based             | Wilcoxon signed-rank          |
+| 3+ independent groups, rank-based         | Kruskal-Wallis                |
+| Association between categorical variables | Chi-square                    |
+| Linear correlation                        | Pearson                       |
+| Monotonic/rank correlation                | Spearman                      |
+
+---
+
+# Putting Everything Together
+
+These 10 concepts are connected.
+
+A typical Data Science workflow could look like:
+
+```text
+Raw Population
+      ↓
+Take Sample
+      ↓
+Sample Statistics
+      ↓
+CLT / Sampling Distribution
+      ↓
+Confidence Interval
+      ↓
+Hypothesis Test
+      ↓
+p-value
+      ↓
+Type I / Type II Error
+      ↓
+Statistical Decision
+      ↓
+Business Decision
+```
+
+For example, an A/B test:
+
+```text
+                 Website Users
+                       │
+               Random assignment
+                 ┌─────┴─────┐
+                 ↓           ↓
+             Control      Treatment
+                 │           │
+                 ↓           ↓
+             Conversion   Conversion
+                 │           │
+                 └─────┬─────┘
+                       ↓
+                Difference
+                       ↓
+                Hypothesis test
+                       ↓
+                    p-value
+                       ↓
+             Confidence interval
+                       ↓
+          Statistical significance
+                       ↓
+           Practical significance
+                       ↓
+              Business decision
+```
+
+---
+
+# 🔥 Interview-Level Connections
+
+## Connection 1
+
+### Why does sample size matter?
+
+Larger (n):
+
+[
+SE=\frac{\sigma}{\sqrt n}
+]
+
+Therefore:
+
+[
+n\uparrow
+\Rightarrow SE\downarrow
+]
+
+Smaller standard error means estimates become more precise.
+
+---
+
+## Connection 2
+
+### What happens to Type II error when sample size increases?
+
+Generally:
+
+[
+n\uparrow
+\Rightarrow Power\uparrow
+\Rightarrow \beta\downarrow
+]
+
+assuming other factors remain comparable.
+
+---
+
+## Connection 3
+
+### What happens to confidence intervals with larger samples?
+
+Because:
+
+[
+SE\propto\frac{1}{\sqrt n}
+]
+
+larger samples generally produce narrower confidence intervals.
+
+---
+
+## Connection 4
+
+### Why can a tiny effect have a tiny p-value?
+
+Because:
+
+[
+Test\ statistic \approx
+\frac{Effect}{Standard\ Error}
+]
+
+and:
+
+[
+SE\downarrow
+]
+
+as sample size increases.
+
+Therefore even a small effect can become statistically significant with a sufficiently large sample.
+
+---
+
+# 🧠 Common Interview Traps
+
+### Trap 1
+
+**"CLT says data becomes normal."**
+
+❌ Wrong.
+
+The **sampling distribution of the statistic**, commonly the sample mean, becomes approximately normal.
+
+---
+
+### Trap 2
+
+**"p-value is the probability that the null hypothesis is true."**
+
+❌ Wrong.
+
+It is:
+
+[
+P(Data\ as\ extreme\ as\ observed|H_0)
+]
+
+---
+
+### Trap 3
+
+**"p > 0.05 proves there is no effect."**
+
+❌ Wrong.
+
+It means there isn't sufficient evidence to reject (H_0) at that significance level.
+
+---
+
+### Trap 4
+
+**"Correlation means causation."**
+
+❌ Wrong.
+
+Correlation only establishes association.
+
+---
+
+### Trap 5
+
+**"Non-parametric means no assumptions."**
+
+❌ Wrong.
+
+Non-parametric tests generally make fewer or different assumptions, not zero assumptions.
+
+---
+
+### Trap 6
+
+**"95% CI means there is a 95% chance the true mean is inside this interval."**
+
+❌ Not in the classical frequentist interpretation.
+
+The 95% refers to the long-run coverage of the procedure.
+
+---
+
+### Trap 7
+
+**"Mann-Whitney always tests medians."**
+
+❌ Oversimplification.
+
+It is fundamentally a rank-based test of distributional differences/stochastic ordering; a median interpretation needs additional assumptions.
+
+---
+
+# 📝 Practice Questions
+
+## Beginner
+
+### Q1
+
+A population has:
+
+```text
+Mean = 100
+Standard deviation = 20
+```
+
+A random sample of:
+
+```text
+n = 100
+```
+
+is taken.
+
+What is the standard error of the sample mean?
+
+---
+
+### Q2
+
+A hypothesis test gives:
+
+```text
+p = 0.03
+α = 0.05
+```
+
+What decision should you make?
+
+---
+
+### Q3
+
+Identify the error:
+
+> A disease test says a healthy person has the disease.
+
+---
+
+### Q4
+
+What happens to standard error when sample size increases?
+
+---
+
+### Q5
+
+Which is generally wider?
+
+```text
+95% CI
+95% Prediction Interval
+```
+
+---
+
+# Intermediate
+
+### Q6
+
+Why is sample variance divided by:
+
+[
+n-1
+]
+
+instead of (n)?
+
+---
+
+### Q7
+
+A dataset has:
+
+```text
+Mean = ₹80,000
+Median = ₹40,000
+```
+
+What can this suggest about the distribution?
+
+---
+
+### Q8
+
+A company's conversion rate changes from:
+
+```text
+10.0% → 10.1%
+```
+
+and:
+
+```text
+p < 0.001
+```
+
+Is the improvement necessarily practically important?
+
+Explain.
+
+---
+
+### Q9
+
+You have:
+
+```text
+Before training
+After training
+```
+
+for the same 100 employees.
+
+Should you treat the groups as independent?
+
+Why or why not?
+
+---
+
+### Q10
+
+A variable has a very long right tail.
+
+Which transformation might you consider?
+
+```text
+Log transformation
+```
+
+Why?
+
+---
+
+# Advanced Interview Questions
+
+### Q11
+
+Why can the CLT hold even if the original population is highly skewed?
+
+---
+
+### Q12
+
+What happens to the confidence interval when sample size increases from 100 to 10,000?
+
+---
+
+### Q13
+
+Explain why increasing α can increase statistical power.
+
+---
+
+### Q14
+
+Why does a rare disease produce many false positives even when a diagnostic test has high specificity?
+
+---
+
+### Q15
+
+Explain the difference between:
+
+[
+P(A|B)
+]
+
+and:
+
+[
+P(B|A)
+]
+
+Why is confusing them dangerous?
+
+---
+
+### Q16
+
+A correlation coefficient is:
+
+[
+r=0
+]
+
+Does that mean X and Y are completely unrelated?
+
+---
+
+### Q17
+
+Can a statistically significant result have no practical significance?
+
+---
+
+### Q18
+
+Can a non-significant result still have a practically important effect?
+
+---
+
+### Q19
+
+Why does multiple hypothesis testing increase the risk of false positives?
+
+---
+
+### Q20
+
+You have three independent groups with highly skewed numerical data. Which tests might you consider, and what assumptions would you investigate before deciding?
+
+---
+
+# 🚀 Final Revision Sheet
+
+Memorize this section before an interview.
+
+```text
+CLT
+→ Sampling distribution of mean becomes approximately normal
+→ Large sample
+→ Enables statistical inference
+
+LLN
+→ Sample mean approaches population mean
+→ More observations → better convergence
+
+Type I
+→ False Positive
+→ Reject true H₀
+→ Probability = α
+
+Type II
+→ False Negative
+→ Fail to reject false H₀
+→ Probability = β
+
+Power
+→ 1 - β
+
+p-value
+→ P(data at least as extreme | H₀ true)
+→ NOT probability that H₀ is true
+
+Correlation
+→ Association
+→ NOT causation
+
+Population variance
+→ Divide by N
+
+Sample variance
+→ Divide by n - 1
+→ Bessel's correction
+
+Bayes
+→ Prior + Evidence → Posterior
+
+P(A|B)
+→ Probability of A given B
+
+Confidence Interval
+→ Estimates population parameter
+
+Prediction Interval
+→ Predicts individual future observation
+→ Wider than CI
+
+Skewness
+→ Asymmetry
+
+Positive skew
+→ Long right tail
+→ Often mean > median
+
+Negative skew
+→ Long left tail
+→ Often mean < median
+
+Kurtosis
+→ Tail/extreme-value behavior
+
+Parametric
+→ Stronger distributional assumptions
+→ t-test, ANOVA, Pearson
+
+Non-parametric
+→ Fewer/different distributional assumptions
+→ Mann-Whitney, Wilcoxon, Kruskal-Wallis, Spearman
+```
+
+---
+
+# 🎯 What You Should Be Able to Do After This
+
+For **Data Science interviews**, don't stop at definitions. You should be able to take a business problem and reason:
+
+```text
+What is my population?
+        ↓
+What is my sample?
+        ↓
+What statistic am I estimating?
+        ↓
+What assumptions do I have?
+        ↓
+What is the sampling distribution?
+        ↓
+Do I need CLT?
+        ↓
+What confidence interval should I use?
+        ↓
+What hypothesis am I testing?
+        ↓
+What test is appropriate?
+        ↓
+What does the p-value tell me?
+        ↓
+What Type I / Type II errors are possible?
+        ↓
+Is the result statistically significant?
+        ↓
+Is it practically significant?
+        ↓
+What business decision should I make?
+```
+
+That reasoning chain is **much more valuable in a Data Science interview than memorizing 20 isolated statistical definitions**.
+---
 
 ### Hypothesis Testing & A/B Testing
 11. Walk me through how you would design an A/B test for a new feature.

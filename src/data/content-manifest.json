@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-23T16:26:42.465Z",
+  "generatedAt": "2026-08-24T01:40:34.935Z",
   "root": {
     "name": "Home",
     "path": "",
@@ -88,9 +88,9 @@
         ]
       },
       {
-        "name": "Machine Learning",
+        "name": "Data Science / ML / DL / NLP / MLOps / Data Engineering — Interview Prep",
         "path": "machine-learning",
-        "description": "Notes and references on machine learning fundamentals.",
+        "description": "A curated set of 300 interview questions (50 per category) to prepare for Data Science, Machine Learning, Deep Learning, NLP, MLOps, and Data Engineering roles at productbased comp",
         "folders": [
           {
             "name": "AWS",
@@ -154,9 +154,230 @@
             "path": "machine-learning/README.md",
             "type": "markdown",
             "ext": "md",
-            "size": 279,
-            "title": "Machine Learning",
-            "excerpt": "Notes and references on machine learning fundamentals."
+            "size": 25044,
+            "title": "Data Science / ML / DL / NLP / MLOps / Data Engineering — Interview Prep",
+            "excerpt": "A curated set of 300 interview questions (50 per category) to prepare for Data Science, Machine Learning, Deep Learning, NLP, MLOps, and Data Engineering roles at productbased comp"
+          }
+        ]
+      },
+      {
+        "name": "Python Basics",
+        "path": "PythonforDS",
+        "description": "🔴 Learn Python from basics to intermediate level using this repository Full Python: https://www.youtube.com/watch?v=aVbeVPmFMME NumPy: https://www.youtube.com/watch?v=UrckZng5Ag8 ",
+        "folders": [
+          {
+            "name": "Practice",
+            "path": "PythonforDS/Practice",
+            "folders": [],
+            "files": [
+              {
+                "name": "numpy_practice.ipynb",
+                "path": "PythonforDS/Practice/numpy_practice.ipynb",
+                "type": "other",
+                "ext": "ipynb",
+                "size": 32889
+              }
+            ]
+          }
+        ],
+        "files": [
+          {
+            "name": "Arithmetic Operations.ipynb",
+            "path": "PythonforDS/Arithmetic Operations.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 9901
+          },
+          {
+            "name": "Churn_Modelling.csv",
+            "path": "PythonforDS/Churn_Modelling.csv",
+            "type": "other",
+            "ext": "csv",
+            "size": 684858
+          },
+          {
+            "name": "Control Structures.ipynb",
+            "path": "PythonforDS/Control Structures.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 91228
+          },
+          {
+            "name": "Datatypes.ipynb",
+            "path": "PythonforDS/Datatypes.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 14614
+          },
+          {
+            "name": "Dictionary.ipynb",
+            "path": "PythonforDS/Dictionary.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 17153
+          },
+          {
+            "name": "Exception Handling.ipynb",
+            "path": "PythonforDS/Exception Handling.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 10144
+          },
+          {
+            "name": "File Handling.ipynb",
+            "path": "PythonforDS/File Handling.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 6338
+          },
+          {
+            "name": "Functions.ipynb",
+            "path": "PythonforDS/Functions.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 5681
+          },
+          {
+            "name": "Iterators & Generators.ipynb",
+            "path": "PythonforDS/Iterators & Generators.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 9591
+          },
+          {
+            "name": "Lists.ipynb",
+            "path": "PythonforDS/Lists.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 45722
+          },
+          {
+            "name": "Loops & Iteration.ipynb",
+            "path": "PythonforDS/Loops & Iteration.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 7583
+          },
+          {
+            "name": "map,reduce & filter.ipynb",
+            "path": "PythonforDS/map,reduce & filter.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 9109
+          },
+          {
+            "name": "Matplotlib-TL.ipynb",
+            "path": "PythonforDS/Matplotlib-TL.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 2966718
+          },
+          {
+            "name": "Matplotlib.ipynb",
+            "path": "PythonforDS/Matplotlib.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 2847877
+          },
+          {
+            "name": "Normal_Distribution_+_CLT.ipynb",
+            "path": "PythonforDS/Normal_Distribution_+_CLT.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 33879
+          },
+          {
+            "name": "NumPy.ipynb",
+            "path": "PythonforDS/NumPy.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 951373
+          },
+          {
+            "name": "NumpyAdvanced.ipynb",
+            "path": "PythonforDS/NumpyAdvanced.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 1186
+          },
+          {
+            "name": "NumpyAdvanced1.ipynb",
+            "path": "PythonforDS/NumpyAdvanced1.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 49944
+          },
+          {
+            "name": "OOPs in Python.ipynb",
+            "path": "PythonforDS/OOPs in Python.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 416637
+          },
+          {
+            "name": "Pandas.ipynb",
+            "path": "PythonforDS/Pandas.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 801376
+          },
+          {
+            "name": "README.md",
+            "path": "PythonforDS/README.md",
+            "type": "markdown",
+            "ext": "md",
+            "size": 363,
+            "title": "Python Basics",
+            "excerpt": "🔴 Learn Python from basics to intermediate level using this repository Full Python: https://www.youtube.com/watch?v=aVbeVPmFMME NumPy: https://www.youtube.com/watch?v=UrckZng5Ag8 "
+          },
+          {
+            "name": "Seaborn-TL.ipynb",
+            "path": "PythonforDS/Seaborn-TL.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 4293979
+          },
+          {
+            "name": "Seaborn.ipynb",
+            "path": "PythonforDS/Seaborn.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 204740
+          },
+          {
+            "name": "Sets.ipynb",
+            "path": "PythonforDS/Sets.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 61896
+          },
+          {
+            "name": "String Operations.ipynb",
+            "path": "PythonforDS/String Operations.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 19428
+          },
+          {
+            "name": "Tuples.ipynb",
+            "path": "PythonforDS/Tuples.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 224156
+          },
+          {
+            "name": "Untitled.ipynb",
+            "path": "PythonforDS/Untitled.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 72
+          },
+          {
+            "name": "Variables & Keywords.ipynb",
+            "path": "PythonforDS/Variables & Keywords.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 19854
           }
         ]
       }
@@ -174,12 +395,12 @@
     ]
   },
   "stats": {
-    "folders": 7,
-    "files": 14,
+    "folders": 9,
+    "files": 43,
     "videos": 0,
-    "markdown": 7,
+    "markdown": 8,
     "pdfs": 0,
     "images": 1,
-    "other": 6
+    "other": 34
   }
 }

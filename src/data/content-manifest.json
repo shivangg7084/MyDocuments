@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T01:40:34.935Z",
+  "generatedAt": "2026-08-24T02:13:14.004Z",
   "root": {
     "name": "Home",
     "path": "",
@@ -9,7 +9,15 @@
         "name": "Documents",
         "path": "Documents",
         "folders": [],
-        "files": []
+        "files": [
+          {
+            "name": "awk.md",
+            "path": "Documents/awk.md",
+            "type": "markdown",
+            "ext": "md",
+            "size": 0
+          }
+        ]
       },
       {
         "name": "Getting Started",
@@ -154,7 +162,7 @@
             "path": "machine-learning/README.md",
             "type": "markdown",
             "ext": "md",
-            "size": 25044,
+            "size": 62841,
             "title": "Data Science / ML / DL / NLP / MLOps / Data Engineering — Interview Prep",
             "excerpt": "A curated set of 300 interview questions (50 per category) to prepare for Data Science, Machine Learning, Deep Learning, NLP, MLOps, and Data Engineering roles at productbased comp"
           }
@@ -396,9 +404,9 @@
   },
   "stats": {
     "folders": 9,
-    "files": 43,
+    "files": 44,
     "videos": 0,
-    "markdown": 8,
+    "markdown": 9,
     "pdfs": 0,
     "images": 1,
     "other": 34

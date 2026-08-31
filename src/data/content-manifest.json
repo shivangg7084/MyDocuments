@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T02:24:57.476Z",
+  "generatedAt": "2026-08-31T17:09:50.052Z",
   "root": {
     "name": "Home",
     "path": "",
@@ -266,77 +266,56 @@
         ]
       },
       {
-        "name": "Data Science / ML / DL / NLP / MLOps / Data Engineering — Interview Prep",
-        "path": "machine-learning",
-        "description": "A curated set of 300 interview questions (50 per category) to prepare for Data Science, Machine Learning, Deep Learning, NLP, MLOps, and Data Engineering roles at productbased comp",
+        "name": "Machine Learning",
+        "path": "machine_learning",
         "folders": [
           {
-            "name": "AWS",
-            "path": "machine-learning/aws",
+            "name": "Introduction to Machine Learning",
+            "path": "machine_learning/Introduction",
+            "description": "AI vs ML vs DL vs DS, the three types of ML, the equation of a line and hyperplane, and instance-based vs model-based learning — explained simply, with runnable Python.",
             "folders": [],
             "files": [
               {
-                "name": "README.md",
-                "path": "machine-learning/aws/README.md",
-                "type": "markdown",
-                "ext": "md",
-                "size": 6,
-                "title": "AWS"
-              }
-            ]
-          },
-          {
-            "name": "Images",
-            "path": "machine-learning/images",
-            "folders": [],
-            "files": [
+                "name": "1-AIVMLVSDLVSDS.pdf",
+                "path": "machine_learning/Introduction/1-AIVMLVSDLVSDS.pdf",
+                "type": "pdf",
+                "ext": "pdf",
+                "size": 665852
+              },
               {
-                "name": "diagram.svg",
-                "path": "machine-learning/images/diagram.svg",
-                "type": "image",
-                "ext": "svg",
-                "size": 783
-              }
-            ]
-          },
-          {
-            "name": "Supervised Learning",
-            "path": "machine-learning/supervised-learning",
-            "description": "Regression and classification notes.",
-            "folders": [],
-            "files": [
+                "name": "2-Typesof+ML+technqiues.pdf",
+                "path": "machine_learning/Introduction/2-Typesof+ML+technqiues.pdf",
+                "type": "pdf",
+                "ext": "pdf",
+                "size": 1365639
+              },
               {
-                "name": "linear-regression.md",
-                "path": "machine-learning/supervised-learning/linear-regression.md",
-                "type": "markdown",
-                "ext": "md",
-                "size": 451,
-                "title": "Linear Regression",
-                "excerpt": "Linear regression models the relationship between a dependent variable and one or more independent variables using a straight line. Where m is the slope and c is the intercept. Giv"
+                "name": "2.3-+Equation+Of+a+straight+Line,Hyperplane.pdf",
+                "path": "machine_learning/Introduction/2.3-+Equation+Of+a+straight+Line,Hyperplane.pdf",
+                "type": "pdf",
+                "ext": "pdf",
+                "size": 1226342
+              },
+              {
+                "name": "instance+based+vs+model+absed+learning.pdf",
+                "path": "machine_learning/Introduction/instance+based+vs+model+absed+learning.pdf",
+                "type": "pdf",
+                "ext": "pdf",
+                "size": 1512554
               },
               {
                 "name": "README.md",
-                "path": "machine-learning/supervised-learning/README.md",
+                "path": "machine_learning/Introduction/README.md",
                 "type": "markdown",
                 "ext": "md",
-                "size": 123,
-                "title": "Supervised Learning",
-                "excerpt": "Regression and classification notes."
+                "size": 17972,
+                "title": "Introduction to Machine Learning",
+                "excerpt": "AI vs ML vs DL vs DS, the three types of ML, the equation of a line and hyperplane, and instance-based vs model-based learning — explained simply, with runnable Python."
               }
             ]
           }
         ],
-        "files": [
-          {
-            "name": "README.md",
-            "path": "machine-learning/README.md",
-            "type": "markdown",
-            "ext": "md",
-            "size": 62841,
-            "title": "Data Science / ML / DL / NLP / MLOps / Data Engineering — Interview Prep",
-            "excerpt": "A curated set of 300 interview questions (50 per category) to prepare for Data Science, Machine Learning, Deep Learning, NLP, MLOps, and Data Engineering roles at productbased comp"
-          }
-        ]
+        "files": []
       },
       {
         "name": "Python Basics",
@@ -606,12 +585,12 @@
     ]
   },
   "stats": {
-    "folders": 11,
+    "folders": 9,
     "files": 62,
     "videos": 0,
-    "markdown": 13,
-    "pdfs": 0,
-    "images": 1,
+    "markdown": 10,
+    "pdfs": 4,
+    "images": 0,
     "other": 48
   }
 }

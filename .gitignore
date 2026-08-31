@@ -11,3 +11,10 @@ dist-ssr
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Jupyter/editor scratch dirs. The manifest scanner ignores dot-prefixed paths,
+# so these can never appear in the library — keep them out of the repo too.
+.ipynb_checkpoints/
+.virtual_documents/
+__pycache__/
+.~lock.*#

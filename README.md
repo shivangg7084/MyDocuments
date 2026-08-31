@@ -72,6 +72,33 @@ write to, it doesn't create anything itself — it generates the exact `mkdir`/
 `README.md`/`generate-content` commands for the name and parent you pick, with a
 Copy button, so you can run them locally and push.
 
+### Uploading a folder
+
+While `npm run dev` is running, the sidebar also has an **"Upload Folder"**
+button. Pick a directory on your machine and the whole tree — notebooks,
+READMEs, CSVs, images, nested subfolders — is written straight into
+`public/content/`, then the manifest is regenerated so the folder shows up
+immediately as view-only pages.
+
+This is a dev-server feature, not a site feature: the endpoints live in a Vite
+plugin marked `apply: "serve"` (`scripts/upload-content-plugin.ts`), so the
+button is hidden on the deployed site and the routes don't exist there. Uploading
+only writes files locally — **commit and push to publish them.**
+
+You can rename the destination folder and choose which existing folder to nest it
+under before uploading. Hidden and generated paths are skipped automatically, and
+are never sent to the server:
+
+- anything dot-prefixed (`.git/`, `.ipynb_checkpoints/`, `.env`, `.DS_Store`) —
+  matching the manifest scanner, which ignores dotfiles
+- `node_modules/`, `__pycache__/`, `__MACOSX/`, `venv/`, `env/`
+- `Thumbs.db`, `desktop.ini`
+
+The dialog lists how many files were skipped and why before you commit to the
+upload. Paths are validated server-side too: traversal (`../`), absolute paths,
+and dot-segments are rejected, so an upload can only ever write inside
+`public/content/`.
+
 ### Markdown (`.md`, `.markdown`)
 
 Write normal GitHub-flavored Markdown — headings, lists, tables, links, images,
@@ -114,6 +141,12 @@ Several common "other" types get an in-browser preview instead of a download-onl
 prompt, all parsed client-side:
 
 - **`.txt`** — plain text
+- **`.ipynb`** — Jupyter notebooks, rendered read-only as cells: markdown cells
+  through the normal Markdown reader, code cells syntax-highlighted with `In [n]:`
+  prompts, and each cell's saved outputs (stdout/stderr streams, `text/plain`
+  results, PNG/JPEG/SVG plots, pandas HTML tables, and tracebacks with their ANSI
+  codes stripped). Nothing executes — it renders what the notebook already has
+  stored. Notebooks with no stored output show their code only.
 - **`.csv`** — parsed (including quoted fields) and rendered as a table
 - **`.json`** — pretty-printed and syntax-highlighted, with a Copy button
 - **`.docx`** — converted to formatted HTML in the browser via `mammoth`
@@ -197,6 +230,7 @@ GitHub Actions rebuilds and redeploys automatically.
 | PDF         | `.pdf`                                            | Embedded browser viewer              |
 | Image       | `.png`, `.jpg`, `.jpeg`, `.gif`, `.webp`, `.svg`  | Lightbox viewer                      |
 | Text        | `.txt`                                            | Plain-text reader                    |
+| Notebook    | `.ipynb`                                          | Read-only cell/output renderer       |
 | CSV         | `.csv`                                            | Parsed table                         |
 | JSON        | `.json`                                           | Pretty-printed, syntax-highlighted   |
 | Word        | `.docx`                                           | Rendered as HTML (via `mammoth`)     |
@@ -250,20 +284,23 @@ public/
   content/                  ← your library content (folders, .md, .mp4, .pdf, images, ...)
   .nojekyll
 scripts/
+  content-manifest.ts        ← the scanner, shared by the CLI and the upload plugin
   generate-content-manifest.ts
+  upload-content-plugin.ts   ← dev-only Vite middleware for folder upload
 src/
   components/
-    layout/                 ← Sidebar (+ New Folder), Header, Layout, ThemeToggle
-    file-browser/           ← Breadcrumbs, FolderCard, FileCard, SortFilterBar, NewFolderDialog
+    layout/                 ← Sidebar (+ New Folder, Upload Folder), Header, Layout, ThemeToggle
+    file-browser/           ← Breadcrumbs, FolderCard, FileCard, SortFilterBar, NewFolderDialog, UploadFolderDialog
     markdown/                ← MarkdownRenderer, TableOfContents, CodeBlock
     video/                   ← VideoPlayer
     pdf/                     ← PdfViewer
     image/                   ← ImageViewer
-    preview/                 ← TextViewer, CsvViewer, JsonViewer, DocxViewer, XlsxViewer, ZipViewer, PreviewFrame
+    preview/                 ← TextViewer, CsvViewer, JsonViewer, DocxViewer, XlsxViewer, ZipViewer, NotebookViewer, PreviewFrame
     common/                  ← SearchBar, FileIcon, EmptyState, ErrorState, Modal
   pages/                     ← Home, FolderPage, MarkdownViewerPage, VideoViewerPage, FileViewerPage, NotFound
   hooks/                     ← useSearch, useTheme, useFileBrowser, useTextFile, useBinaryFile
-  lib/                       ← manifest.ts, paths.ts, markdown.ts, file-utils.ts, csv.ts, highlightJson.ts
+  lib/                       ← manifest.ts, paths.ts, markdown.ts, file-utils.ts, csv.ts, highlightJson.ts,
+                               notebook.ts (.ipynb parsing), upload.ts (folder upload client)
   types/content.ts           ← shared manifest types
   data/content-manifest.json ← generated — do not edit by hand
 .github/workflows/deploy.yml

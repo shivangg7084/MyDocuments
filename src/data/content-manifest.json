@@ -1,15 +1,165 @@
 {
-  "generatedAt": "2026-08-24T02:23:17.959Z",
+  "generatedAt": "2026-08-31T02:24:57.476Z",
   "root": {
     "name": "Home",
     "path": "",
     "description": "A personal library of notes, videos, and references — organized by topic.",
     "folders": [
       {
+        "name": "Data Visualisation",
+        "path": "data_visualisation",
+        "folders": [
+          {
+            "name": "Loan Approval Prediction — EDA & Data Analysis",
+            "path": "data_visualisation/capastone-1",
+            "description": "Exploratory Data Analysis, Data Cleaning, Transformation, Statistical Analysis and Visualization on 4,269 loan applications for ABC Bank. Deliverables: [LoanApprovalEDA.ipynb](Loan",
+            "folders": [],
+            "files": [
+              {
+                "name": "Capstone Project-1 EDA&VIz.docx",
+                "path": "data_visualisation/capastone-1/Capstone Project-1 EDA&VIz.docx",
+                "type": "other",
+                "ext": "docx",
+                "size": 15830
+              },
+              {
+                "name": "Capstone Project-1-Final Report.docx",
+                "path": "data_visualisation/capastone-1/Capstone Project-1-Final Report.docx",
+                "type": "other",
+                "ext": "docx",
+                "size": 17126
+              },
+              {
+                "name": "Loan Application Accept or Reject.csv",
+                "path": "data_visualisation/capastone-1/Loan Application Accept or Reject.csv",
+                "type": "other",
+                "ext": "csv",
+                "size": 384284
+              },
+              {
+                "name": "Loan_Approval_EDA.ipynb",
+                "path": "data_visualisation/capastone-1/Loan_Approval_EDA.ipynb",
+                "type": "other",
+                "ext": "ipynb",
+                "size": 3876944,
+                "title": "Loan Approval Prediction — Exploratory Data Analysis, Data Cleaning, Transformation, Statistical Analysis & Visualization",
+                "excerpt": "Capstone Project 1 — Data Science Dataset: Loan Application Accept or Reject.csv Client scenario: ABC Bank — loan application screening Notebook: LoanApprovalEDA.ipynb ABC Bank pro"
+              },
+              {
+                "name": "README.md",
+                "path": "data_visualisation/capastone-1/README.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 48053,
+                "title": "Loan Approval Prediction — EDA & Data Analysis",
+                "excerpt": "Exploratory Data Analysis, Data Cleaning, Transformation, Statistical Analysis and Visualization on 4,269 loan applications for ABC Bank. Deliverables: [LoanApprovalEDA.ipynb](Loan"
+              }
+            ]
+          }
+        ],
+        "files": [
+          {
+            "name": "data.csv",
+            "path": "data_visualisation/data.csv",
+            "type": "other",
+            "ext": "csv",
+            "size": 19447
+          },
+          {
+            "name": "LoanApplications.csv",
+            "path": "data_visualisation/LoanApplications.csv",
+            "type": "other",
+            "ext": "csv",
+            "size": 384284
+          },
+          {
+            "name": "matplotlib.ipynb",
+            "path": "data_visualisation/matplotlib.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 231239,
+            "title": "Matplotlib",
+            "excerpt": "Matplotlib is a powerful plotting library for Python that enables the creation of static, animated, and interactive visualisations. It is widely used for data visualisation in data"
+          },
+          {
+            "name": "NumPy.ipynb",
+            "path": "data_visualisation/NumPy.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 46825,
+            "title": "NumPy — Complete Notes + 9/10 Difficulty Practice",
+            "excerpt": "Goal: Build strong NumPy fundamentals for Data Science, ML and interviews. NumPy (Numerical Python) provides fast, vectorized ndimensional arrays and mathematical operations. 1. Ar"
+          },
+          {
+            "name": "numpyassignments.ipynb",
+            "path": "data_visualisation/numpyassignments.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 4285,
+            "title": "Module: NumPy Assignments",
+            "excerpt": "1. Create a NumPy array of shape (5, 5) filled with random integers between 1 and 20. Replace all the elements in the third column with 1. 2. Create a NumPy array of shape (4, 4) w"
+          },
+          {
+            "name": "numpysolutions.ipynb",
+            "path": "data_visualisation/numpysolutions.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 18168,
+            "title": "Module: NumPy Assignments",
+            "excerpt": "1. Create a NumPy array of shape (5, 5) filled with random integers between 1 and 20. Replace all the elements in the third column with 1. 2. Create a NumPy array of shape (4, 4) w"
+          },
+          {
+            "name": "Pandas.ipynb",
+            "path": "data_visualisation/Pandas.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 59743,
+            "title": "Pandas for Machine Learning — Complete Notes + Advanced Practice",
+            "excerpt": "Pandas is a Python library for data manipulation, cleaning, EDA, feature engineering, and ML data preparation. Series → 1D labeled array DataFrame → 2D labeled tabular structure Ra"
+          },
+          {
+            "name": "pandasasssignments.ipynb",
+            "path": "data_visualisation/pandasasssignments.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 4685,
+            "title": "Module: Pandas Assignments",
+            "excerpt": "1. Create a Pandas DataFrame with 4 columns and 6 rows filled with random integers. Set the index to be the first column. 2. Create a Pandas DataFrame with columns 'A', 'B', 'C' an"
+          },
+          {
+            "name": "pandassolution.ipynb",
+            "path": "data_visualisation/pandassolution.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 20001,
+            "title": "Module: Pandas Assignments",
+            "excerpt": "1. Create a Pandas DataFrame with 4 columns and 6 rows filled with random integers. Set the index to be the first column. 2. Create a Pandas DataFrame with columns 'A', 'B', 'C' an"
+          },
+          {
+            "name": "seaborn.ipynb",
+            "path": "data_visualisation/seaborn.ipynb",
+            "type": "other",
+            "ext": "ipynb",
+            "size": 323847,
+            "title": "Seaborn",
+            "excerpt": "Seaborn is a Python visualisation library based on matplotlib that provides a highlevel interface for drawing attractive and informative statiscal graphics. Seaborn helps in creati"
+          }
+        ]
+      },
+      {
         "name": "Documents",
         "path": "Documents",
         "folders": [],
         "files": [
+          {
+            "name": "aiml.md",
+            "path": "Documents/aiml.md",
+            "type": "markdown",
+            "ext": "md",
+            "size": 37530,
+            "title": "Artificial Intelligence: Complete Foundation",
+            "excerpt": "The two slides together give a highlevel roadmap of Artificial Intelligence, starting from data and AI concepts, moving through Machine Learning, Deep Learning, Computer Vision, NL"
+          },
           {
             "name": "awk.md",
             "path": "Documents/awk.md",
@@ -18,6 +168,24 @@
             "size": 53778,
             "title": "AWK Programming — Complete Notes",
             "excerpt": "awk is one of the most powerful textprocessing tools available in Linux/Unix. It is especially useful for columnbased data processing, filtering, searching, calculations, reporting"
+          },
+          {
+            "name": "Maths.md",
+            "path": "Documents/Maths.md",
+            "type": "markdown",
+            "ext": "md",
+            "size": 27462,
+            "title": "Mathematics for Machine Learning: Complete Linear Algebra Guide",
+            "excerpt": "The topics in your images form the core of Linear Algebra for Machine Learning. These concepts are not just theoretical. They appear directly in: Linear Regression Logistic Regress"
+          },
+          {
+            "name": "probability.md",
+            "path": "Documents/probability.md",
+            "type": "markdown",
+            "ext": "md",
+            "size": 48763,
+            "title": "Probability and Statistics for Machine Learning",
+            "excerpt": "The three slides you shared cover a large part of the probability and statistics foundation needed for Machine Learning and Data Science. The topics can be understood as one connec"
           }
         ]
       },
@@ -185,7 +353,8 @@
                 "path": "PythonforDS/Practice/numpy_practice.ipynb",
                 "type": "other",
                 "ext": "ipynb",
-                "size": 32889
+                "size": 32889,
+                "title": "Numpy Questions to make you (9/10 rated)"
               }
             ]
           }
@@ -210,7 +379,9 @@
             "path": "PythonforDS/Control Structures.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 91228
+            "size": 91228,
+            "title": "Range function",
+            "excerpt": "<h2 style = \"color:Brown\" Binary Operators</h2 works with 2 operands Operand can be: a+b where a,b are two operands & a+3, where a is an operand, and 3 is a variable <h2 style = \"c"
           },
           {
             "name": "Datatypes.ipynb",
@@ -224,7 +395,9 @@
             "path": "PythonforDS/Dictionary.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 17153
+            "size": 17153,
+            "title": "Dictionary",
+            "excerpt": "Dictionary stores element as keys and value pairs The key is like an index, its always unique & immutable The values are the objects that contain information Values are accessed us"
           },
           {
             "name": "Exception Handling.ipynb",
@@ -238,98 +411,116 @@
             "path": "PythonforDS/File Handling.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 6338
+            "size": 6338,
+            "title": "File Handling"
           },
           {
             "name": "Functions.ipynb",
             "path": "PythonforDS/Functions.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 5681
+            "size": 5681,
+            "title": "Functions"
           },
           {
             "name": "Iterators & Generators.ipynb",
             "path": "PythonforDS/Iterators & Generators.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 9591
+            "size": 9604,
+            "title": "Iterators & Generators"
           },
           {
             "name": "Lists.ipynb",
             "path": "PythonforDS/Lists.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 45722
+            "size": 45722,
+            "title": "Lists",
+            "excerpt": "Lists are ordered sequence of mixed data types Lists are written in comma separated elements within square brackets Mutable → You can change, add, or remove elements. Allows duplic"
           },
           {
             "name": "Loops & Iteration.ipynb",
             "path": "PythonforDS/Loops & Iteration.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 7583
+            "size": 7583,
+            "title": "Loops & Iteration"
           },
           {
             "name": "map,reduce & filter.ipynb",
             "path": "PythonforDS/map,reduce & filter.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 9109
+            "size": 9109,
+            "title": "Map, Reduce & Filter"
           },
           {
             "name": "Matplotlib-TL.ipynb",
             "path": "PythonforDS/Matplotlib-TL.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 2966718
+            "size": 2966718,
+            "excerpt": "![image.png](attachment:image.png)"
           },
           {
             "name": "Matplotlib.ipynb",
             "path": "PythonforDS/Matplotlib.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 2847877
+            "size": 2847877,
+            "excerpt": "![image.png](attachment:image.png)"
           },
           {
             "name": "Normal_Distribution_+_CLT.ipynb",
             "path": "PythonforDS/Normal_Distribution_+_CLT.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 33879
+            "size": 33242,
+            "excerpt": "A pvalue less than 0.05 (typically ≤ 0.05) is statistically significant. It indicates strong evidence against the null hypothesis, as there is less than a 5% probability the null i"
           },
           {
             "name": "NumPy.ipynb",
             "path": "PythonforDS/NumPy.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 951373
+            "size": 951373,
+            "title": "Basic Operations",
+            "excerpt": "<h1 style = \"color : Brown\"NumPy</h1 NumPy is a Python library. It is used for working with arrays. It is short for \"Numerical Python\". It is used for computation and processing of"
           },
           {
             "name": "NumpyAdvanced.ipynb",
             "path": "PythonforDS/NumpyAdvanced.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 1186
+            "size": 1186,
+            "excerpt": "What is numpy? NumPy is the fundamental package for scientific computing in Python. It is a Python library that provides a multidimensional array object, various derived objects (s"
           },
           {
             "name": "NumpyAdvanced1.ipynb",
             "path": "PythonforDS/NumpyAdvanced1.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 49944
+            "size": 49944,
+            "title": "What is numpy?",
+            "excerpt": "NumPy is the fundamental package for scientific computing in Python. It is a Python library that provides a multidimensional array object, various derived objects (such as masked a"
           },
           {
             "name": "OOPs in Python.ipynb",
             "path": "PythonforDS/OOPs in Python.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 416637
+            "size": 416637,
+            "excerpt": "<h1 style = \"color : Blue\" i. Creating Classes and Objects </h1 In this session, we will be covering the most important concepts in OOPs which you may come across when working in t"
           },
           {
             "name": "Pandas.ipynb",
             "path": "PythonforDS/Pandas.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 801376
+            "size": 801376,
+            "title": "Concat & Merging",
+            "excerpt": "<h1 style = \"color : Brown\"Pandas</h1 Pandas is fast, powerful, flexible and easy to use open source data analysis and manipulation tool. Pandas is a Python library. Pandas is used"
           },
           {
             "name": "README.md",
@@ -345,35 +536,44 @@
             "path": "PythonforDS/Seaborn-TL.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 4293979
+            "size": 4293979,
+            "excerpt": "<h1 style = \"color : Brown\"Seaborn</h1 It is summarized that if Matplotlib “tries to make easy things easy and hard things possible”, Seaborn tries to make a welldefined set of har"
           },
           {
             "name": "Seaborn.ipynb",
             "path": "PythonforDS/Seaborn.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 204740
+            "size": 204740,
+            "title": "Seaborn",
+            "excerpt": "It is summarized that if Matplotlib “tries to make easy things easy and hard things possible”, Seaborn tries to make a welldefined set of hard things easy too.” Source: Tutorialspo"
           },
           {
             "name": "Sets.ipynb",
             "path": "PythonforDS/Sets.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 61896
+            "size": 61896,
+            "title": "Sets",
+            "excerpt": "Sets are a type of collection like lists, tuples storing mixed data Sets are enclosed within curly brackets and elements are written as commaseparated Sets are unordered Sets does "
           },
           {
             "name": "String Operations.ipynb",
             "path": "PythonforDS/String Operations.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 19428
+            "size": 19428,
+            "title": "Practice Question",
+            "excerpt": "In a certain encrypted message which has information about the location(area, city), the characters are jumbled such that first character of the first word is followed by the first"
           },
           {
             "name": "Tuples.ipynb",
             "path": "PythonforDS/Tuples.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 224156
+            "size": 224156,
+            "title": "Tuples",
+            "excerpt": "Tuples are ordered sequence of mixed data types Tuples are written in comma separated elements within parenthesis Tuples can be defined in various ways ![image.png](attachment:imag"
           },
           {
             "name": "Untitled.ipynb",
@@ -387,7 +587,8 @@
             "path": "PythonforDS/Variables & Keywords.ipynb",
             "type": "other",
             "ext": "ipynb",
-            "size": 19854
+            "size": 19854,
+            "excerpt": "<h1 style = \"color : Brown\"Variables & Keywords</h1 A Python variable is a reserved memory location to store values. In other words, a variable in a python program gives data to th"
           }
         ]
       }
@@ -405,12 +606,12 @@
     ]
   },
   "stats": {
-    "folders": 9,
-    "files": 44,
+    "folders": 11,
+    "files": 62,
     "videos": 0,
-    "markdown": 9,
+    "markdown": 13,
     "pdfs": 0,
     "images": 1,
-    "other": 34
+    "other": 48
   }
 }

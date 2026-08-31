@@ -5,6 +5,7 @@ import {
   File,
   Folder,
   FileArchive,
+  FileCode2,
   FileSpreadsheet,
   FileType as FileTypeIcon,
 } from "lucide-react";
@@ -30,6 +31,7 @@ export function FileIcon({ type, ext, className }: FileIconProps) {
   if (type === "pdf") return <FileTypeIcon className={clsx(common, "text-red-500")} />;
   if (type === "image") return <FileImage className={clsx(common, "text-emerald-500")} />;
 
+  if (ext === "ipynb") return <FileCode2 className={clsx(common, "text-orange-500")} />;
   if (ext && ARCHIVE_EXT.has(ext)) return <FileArchive className={clsx(common, "text-amber-500")} />;
   if (ext && SPREADSHEET_EXT.has(ext)) return <FileSpreadsheet className={clsx(common, "text-green-500")} />;
   if (ext && DOC_EXT.has(ext)) return <FileTypeIcon className={clsx(common, "text-blue-500")} />;

@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronRight, FolderPlus, Home, Library, Plus } from "lucide-react";
+import { ChevronRight, FolderPlus, FolderUp, Home, Library, Plus } from "lucide-react";
 import { clsx } from "clsx";
 import { manifest } from "@/lib/manifest";
 import { folderRoute } from "@/lib/paths";
 import { FileIcon } from "@/components/common/FileIcon";
 import { NewFolderDialog } from "@/components/file-browser/NewFolderDialog";
+import { UploadFolderDialog } from "@/components/file-browser/UploadFolderDialog";
+import { uploadSupported } from "@/lib/upload";
 import type { ManifestFolder } from "@/types/content";
 
 interface FolderTreeItemProps {
@@ -78,6 +80,7 @@ export function Sidebar({ className }: SidebarProps) {
   const location = useLocation();
   const atHome = location.pathname === "/" || location.pathname === "";
   const [dialogParentPath, setDialogParentPath] = useState<string | null>(null);
+  const [uploadOpen, setUploadOpen] = useState(false);
 
   return (
     <nav className={clsx("flex flex-col gap-1 overflow-y-auto px-2 py-4", className)}>
@@ -123,9 +126,24 @@ export function Sidebar({ className }: SidebarProps) {
         New Folder
       </button>
 
+      {/* Uploading writes into public/content via the dev server, so it only
+          exists while running `npm run dev` — not on the deployed static site. */}
+      {uploadSupported && (
+        <button
+          type="button"
+          onClick={() => setUploadOpen(true)}
+          className="mt-2 flex items-center gap-2 rounded-lg border border-dashed border-slate-300 px-3 py-2 text-sm text-slate-500 hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:text-slate-400 dark:hover:border-indigo-700 dark:hover:text-indigo-400"
+        >
+          <FolderUp className="h-4 w-4" />
+          Upload Folder
+        </button>
+      )}
+
       {dialogParentPath !== null && (
         <NewFolderDialog defaultParentPath={dialogParentPath} onClose={() => setDialogParentPath(null)} />
       )}
+
+      {uploadOpen && <UploadFolderDialog onClose={() => setUploadOpen(false)} />}
     </nav>
   );
 }

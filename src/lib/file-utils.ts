@@ -73,6 +73,7 @@ const SPECIAL_ICON_LABEL: Record<string, string> = {
 };
 
 const OTHER_EXT_LABEL: Record<string, string> = {
+  ipynb: "Jupyter Notebook",
   txt: "Text",
   csv: "CSV",
   json: "JSON",

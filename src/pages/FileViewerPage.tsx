@@ -12,6 +12,7 @@ import { JsonViewer } from "@/components/preview/JsonViewer";
 import { DocxViewer } from "@/components/preview/DocxViewer";
 import { XlsxViewer } from "@/components/preview/XlsxViewer";
 import { ZipViewer } from "@/components/preview/ZipViewer";
+import { NotebookViewer } from "@/components/preview/NotebookViewer";
 import { FileIcon } from "@/components/common/FileIcon";
 import { ErrorState } from "@/components/common/ErrorState";
 
@@ -45,9 +46,12 @@ export function FileViewerPage() {
         <XlsxViewer src={url} fileName={file.name} />
       )}
       {file.type === "other" && file.ext === "zip" && <ZipViewer src={url} fileName={file.name} />}
+      {file.type === "other" && file.ext === "ipynb" && (
+        <NotebookViewer src={url} fileName={file.name} baseDir={folderPath} />
+      )}
 
       {file.type === "other" &&
-        !["txt", "csv", "json", "docx", "xlsx", "xls", "zip"].includes(file.ext) && (
+        !["txt", "csv", "json", "docx", "xlsx", "xls", "zip", "ipynb"].includes(file.ext) && (
           <div className="flex flex-col items-center gap-4 rounded-xl border border-dashed border-slate-200 px-6 py-16 text-center dark:border-slate-800">
             <FileIcon type="other" ext={file.ext} className="h-12 w-12" />
             <div>

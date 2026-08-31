@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "node:path";
+import { uploadContentPlugin } from "./scripts/upload-content-plugin";
 
 // Base path is injected at build time by the GitHub Actions workflow so the
 // app resolves assets correctly under https://USERNAME.github.io/REPOSITORY/.
@@ -9,7 +10,7 @@ const basePath = process.env.VITE_BASE_PATH ?? "/";
 
 export default defineConfig({
   base: basePath,
-  plugins: [react()],
+  plugins: [react(), uploadContentPlugin()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),

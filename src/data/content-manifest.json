@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T17:09:50.052Z",
+  "generatedAt": "2026-09-04T00:52:49.460Z",
   "root": {
     "name": "Home",
     "path": "",
@@ -313,6 +313,299 @@
                 "excerpt": "AI vs ML vs DL vs DS, the three types of ML, the equation of a line and hyperplane, and instance-based vs model-based learning — explained simply, with runnable Python."
               }
             ]
+          },
+          {
+            "name": "UnsupervisedLearning",
+            "path": "machine_learning/UnsupervisedLearning",
+            "folders": [
+              {
+                "name": "AnomalyDetectionMahcineLearningAlgrithms",
+                "path": "machine_learning/UnsupervisedLearning/AnomalyDetectionMahcineLearningAlgrithms",
+                "folders": [],
+                "files": [
+                  {
+                    "name": "1.0-Anomaly+Detection+Isolation+Forest.pdf",
+                    "path": "machine_learning/UnsupervisedLearning/AnomalyDetectionMahcineLearningAlgrithms/1.0-Anomaly+Detection+Isolation+Forest.pdf",
+                    "type": "pdf",
+                    "ext": "pdf",
+                    "size": 747655
+                  },
+                  {
+                    "name": "3.0-Local+Outlier+Factor+Anamoly+Detection.pdf",
+                    "path": "machine_learning/UnsupervisedLearning/AnomalyDetectionMahcineLearningAlgrithms/3.0-Local+Outlier+Factor+Anamoly+Detection.pdf",
+                    "type": "pdf",
+                    "ext": "pdf",
+                    "size": 530954
+                  },
+                  {
+                    "name": "DBSCAN+Implementation+(1).ipynb",
+                    "path": "machine_learning/UnsupervisedLearning/AnomalyDetectionMahcineLearningAlgrithms/DBSCAN+Implementation+(1).ipynb",
+                    "type": "other",
+                    "ext": "ipynb",
+                    "size": 291969,
+                    "title": "DBSCAN Clutering"
+                  },
+                  {
+                    "name": "Isolation+Anamoly+Detection.ipynb",
+                    "path": "machine_learning/UnsupervisedLearning/AnomalyDetectionMahcineLearningAlgrithms/Isolation+Anamoly+Detection.ipynb",
+                    "type": "other",
+                    "ext": "ipynb",
+                    "size": 54924,
+                    "title": "Isolation Forest Anomaly Detection"
+                  }
+                ]
+              },
+              {
+                "name": "DBScan",
+                "path": "machine_learning/UnsupervisedLearning/DBScan",
+                "folders": [],
+                "files": [
+                  {
+                    "name": "DBCAN.pdf",
+                    "path": "machine_learning/UnsupervisedLearning/DBScan/DBCAN.pdf",
+                    "type": "pdf",
+                    "ext": "pdf",
+                    "size": 906736
+                  },
+                  {
+                    "name": "DBSCAN+Implementation.ipynb",
+                    "path": "machine_learning/UnsupervisedLearning/DBScan/DBSCAN+Implementation.ipynb",
+                    "type": "other",
+                    "ext": "ipynb",
+                    "size": 115024
+                  }
+                ]
+              },
+              {
+                "name": "HierarchalClustering",
+                "path": "machine_learning/UnsupervisedLearning/HierarchalClustering",
+                "folders": [],
+                "files": [
+                  {
+                    "name": "Hierarichal+Clustering.pdf",
+                    "path": "machine_learning/UnsupervisedLearning/HierarchalClustering/Hierarichal+Clustering.pdf",
+                    "type": "pdf",
+                    "ext": "pdf",
+                    "size": 1345861
+                  },
+                  {
+                    "name": "Hierarichal+Clustering+Implementation.ipynb",
+                    "path": "machine_learning/UnsupervisedLearning/HierarchalClustering/Hierarichal+Clustering+Implementation.ipynb",
+                    "type": "other",
+                    "ext": "ipynb",
+                    "size": 120335
+                  },
+                  {
+                    "name": "kmeans+vss+heirarichal.pdf",
+                    "path": "machine_learning/UnsupervisedLearning/HierarchalClustering/kmeans+vss+heirarichal.pdf",
+                    "type": "pdf",
+                    "ext": "pdf",
+                    "size": 1508379
+                  }
+                ]
+              },
+              {
+                "name": "Introduction to Unsupervised Machine Learning",
+                "path": "machine_learning/UnsupervisedLearning/Introduction",
+                "description": "Machine Learning can broadly be divided into different categories based on whether the data contains a known output/target. The two important categories discussed here are: 1. Supe",
+                "folders": [],
+                "files": [
+                  {
+                    "name": "introduction+to+unsupervised+ML.pdf",
+                    "path": "machine_learning/UnsupervisedLearning/Introduction/introduction+to+unsupervised+ML.pdf",
+                    "type": "pdf",
+                    "ext": "pdf",
+                    "size": 1156352
+                  },
+                  {
+                    "name": "readme.md",
+                    "path": "machine_learning/UnsupervisedLearning/Introduction/readme.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 21618,
+                    "title": "Introduction to Unsupervised Machine Learning",
+                    "excerpt": "Machine Learning can broadly be divided into different categories based on whether the data contains a known output/target. The two important categories discussed here are: 1. Supe"
+                  }
+                ]
+              },
+              {
+                "name": "K-Means Clustering",
+                "path": "machine_learning/UnsupervisedLearning/KMeans",
+                "description": "How K-Means actually works — the three-step loop, WCSS and the elbow, Euclidean vs Manhattan distance, the random initialization trap and k-means++, and the assumptions that break it.",
+                "folders": [
+                  {
+                    "name": "Figures",
+                    "path": "machine_learning/UnsupervisedLearning/KMeans/figures",
+                    "folders": [],
+                    "files": [
+                      {
+                        "name": "choosing-k-mall.png",
+                        "path": "machine_learning/UnsupervisedLearning/KMeans/figures/choosing-k-mall.png",
+                        "type": "image",
+                        "ext": "png",
+                        "size": 104959
+                      },
+                      {
+                        "name": "choosing-k.png",
+                        "path": "machine_learning/UnsupervisedLearning/KMeans/figures/choosing-k.png",
+                        "type": "image",
+                        "ext": "png",
+                        "size": 105887
+                      },
+                      {
+                        "name": "eda-distributions.png",
+                        "path": "machine_learning/UnsupervisedLearning/KMeans/figures/eda-distributions.png",
+                        "type": "image",
+                        "ext": "png",
+                        "size": 77924
+                      },
+                      {
+                        "name": "eda-scatter.png",
+                        "path": "machine_learning/UnsupervisedLearning/KMeans/figures/eda-scatter.png",
+                        "type": "image",
+                        "ext": "png",
+                        "size": 142510
+                      },
+                      {
+                        "name": "feature-experiments.png",
+                        "path": "machine_learning/UnsupervisedLearning/KMeans/figures/feature-experiments.png",
+                        "type": "image",
+                        "ext": "png",
+                        "size": 143616
+                      },
+                      {
+                        "name": "final-clusters.png",
+                        "path": "machine_learning/UnsupervisedLearning/KMeans/figures/final-clusters.png",
+                        "type": "image",
+                        "ext": "png",
+                        "size": 148887
+                      },
+                      {
+                        "name": "kmeans-iterations.png",
+                        "path": "machine_learning/UnsupervisedLearning/KMeans/figures/kmeans-iterations.png",
+                        "type": "image",
+                        "ext": "png",
+                        "size": 82602
+                      },
+                      {
+                        "name": "random-init-trap.png",
+                        "path": "machine_learning/UnsupervisedLearning/KMeans/figures/random-init-trap.png",
+                        "type": "image",
+                        "ext": "png",
+                        "size": 80622
+                      },
+                      {
+                        "name": "segment-profiles.png",
+                        "path": "machine_learning/UnsupervisedLearning/KMeans/figures/segment-profiles.png",
+                        "type": "image",
+                        "ext": "png",
+                        "size": 78553
+                      },
+                      {
+                        "name": "silhouette-k5.png",
+                        "path": "machine_learning/UnsupervisedLearning/KMeans/figures/silhouette-k5.png",
+                        "type": "image",
+                        "ext": "png",
+                        "size": 94316
+                      }
+                    ]
+                  }
+                ],
+                "files": [
+                  {
+                    "name": "K+Means+Clustering+Algorithms+implementation.ipynb",
+                    "path": "machine_learning/UnsupervisedLearning/KMeans/K+Means+Clustering+Algorithms+implementation.ipynb",
+                    "type": "other",
+                    "ext": "ipynb",
+                    "size": 128636
+                  },
+                  {
+                    "name": "Kmeans+clustering.pdf",
+                    "path": "machine_learning/UnsupervisedLearning/KMeans/Kmeans+clustering.pdf",
+                    "type": "pdf",
+                    "ext": "pdf",
+                    "size": 2104190
+                  },
+                  {
+                    "name": "Project_mall_customers.csv",
+                    "path": "machine_learning/UnsupervisedLearning/KMeans/Project_mall_customers.csv",
+                    "type": "other",
+                    "ext": "csv",
+                    "size": 3981
+                  },
+                  {
+                    "name": "project.md",
+                    "path": "machine_learning/UnsupervisedLearning/KMeans/project.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 27989,
+                    "title": "Project — Mall Customer Segmentation",
+                    "excerpt": "Clustering 200 mall customers with K-Means, from raw CSV to a marketing recommendation — with the reasoning behind every modelling choice and a measured account of what improved the clusters and what didn't."
+                  },
+                  {
+                    "name": "ProjectProblemStatement.docx",
+                    "path": "machine_learning/UnsupervisedLearning/KMeans/ProjectProblemStatement.docx",
+                    "type": "other",
+                    "ext": "docx",
+                    "size": 14353
+                  },
+                  {
+                    "name": "README.md",
+                    "path": "machine_learning/UnsupervisedLearning/KMeans/README.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 23377,
+                    "title": "K-Means Clustering",
+                    "excerpt": "How K-Means actually works — the three-step loop, WCSS and the elbow, Euclidean vs Manhattan distance, the random initialization trap and k-means++, and the assumptions that break it."
+                  }
+                ]
+              },
+              {
+                "name": "PCA",
+                "path": "machine_learning/UnsupervisedLearning/PCA",
+                "folders": [],
+                "files": [
+                  {
+                    "name": "PCA.pdf",
+                    "path": "machine_learning/UnsupervisedLearning/PCA/PCA.pdf",
+                    "type": "pdf",
+                    "ext": "pdf",
+                    "size": 6424976
+                  },
+                  {
+                    "name": "Principal+Component+Analysis+(PCA)+Implementation.ipynb",
+                    "path": "machine_learning/UnsupervisedLearning/PCA/Principal+Component+Analysis+(PCA)+Implementation.ipynb",
+                    "type": "other",
+                    "ext": "ipynb",
+                    "size": 82814
+                  },
+                  {
+                    "name": "README_PCA.md",
+                    "path": "machine_learning/UnsupervisedLearning/PCA/README_PCA.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 43072,
+                    "title": "Principal Component Analysis (PCA) — Complete Notes",
+                    "excerpt": "Topic: Principal Component Analysis (PCA) / Dimensionality Reduction Perspective: Theory + Geometric Intuition + Mathematical Intuition + Scikitlearn Implementation Source basis: P"
+                  }
+                ]
+              },
+              {
+                "name": "SilhoutteClustering",
+                "path": "machine_learning/UnsupervisedLearning/SilhoutteClustering",
+                "folders": [],
+                "files": [
+                  {
+                    "name": "silhoutteclustering.pdf",
+                    "path": "machine_learning/UnsupervisedLearning/SilhoutteClustering/silhoutteclustering.pdf",
+                    "type": "pdf",
+                    "ext": "pdf",
+                    "size": 1263701
+                  }
+                ]
+              }
+            ],
+            "files": []
           }
         ],
         "files": []
@@ -585,12 +878,12 @@
     ]
   },
   "stats": {
-    "folders": 9,
-    "files": 62,
+    "folders": 18,
+    "files": 93,
     "videos": 0,
-    "markdown": 10,
-    "pdfs": 4,
-    "images": 0,
-    "other": 48
+    "markdown": 14,
+    "pdfs": 13,
+    "images": 10,
+    "other": 56
   }
 }

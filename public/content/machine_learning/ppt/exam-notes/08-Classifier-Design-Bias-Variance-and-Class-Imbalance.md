@@ -8,35 +8,59 @@
 
 ## 1. Bias and Variance
 
+Every way a model can fail comes down to one of two opposite diseases. Learn them as a pair.
+
 ### Bias
-> **Definition:** When an algorithm has **limited flexibility to learn the true value from the dataset**, the model is **biased**.
+
+> **Definition:** When an algorithm has **limited flexibility to learn the true value from the dataset**, the model is **biased.**
 
 - **Bias is an error from erroneous ASSUMPTIONS in the learning algorithm.**
 - **High bias** can cause an algorithm to **miss the relevant relations between features and target outputs — i.e. UNDERFITTING.**
 
+**In plain terms:** the model is **too simple** and has decided in advance what the answer must look like. Force a straight line through data that is clearly curved and it will be wrong no matter how much data you supply — the assumption itself was wrong.
+
 ### Variance
-> **Definition:** Variance refers to **an algorithm's sensitivity to specific sets of the training set**.
+
+> **Definition:** Variance refers to **an algorithm's sensitivity to specific sets of the training set.**
 
 - **Variance is an error from sensitivity to SMALL FLUCTUATIONS in the training set.**
 - **High variance** can cause an algorithm to **model the random NOISE in the training data rather than the intended outputs — i.e. OVERFITTING.**
 
-### The one-line memory hook
+**In plain terms:** the model is **too sensitive**. It takes every accident in your training data seriously — including the noise — and so it changes wildly if you retrain it on a slightly different sample.
+
+### Two ways to picture it
+
+**The dartboard.** *High bias:* every dart lands tightly grouped, but in the wrong corner — consistent and consistently wrong. *High variance:* darts scattered all around the board — they average near the bullseye, but no individual throw is reliable.
+
+**The student.**
+
+| | The student who… | Result |
+|---|---|---|
+| **High bias** | Skims one chapter and answers everything with one vague rule | Fails the practice papers **and** the exam |
+| **High variance** | Memorises the answer key word-for-word without understanding | Perfect on practice papers, lost when the question is reworded |
+| **Just right** | Understands the underlying method | Does well on both |
+
+### The diagnostic table
 
 | | Bias | Variance |
 |---|---|---|
-| Error caused by | **Wrong assumptions** | **Sensitivity to small fluctuations / noise** |
-| Too much of it gives | **Underfitting** | **Overfitting** |
+| Error caused by | **Wrong assumptions** | **Sensitivity to fluctuations / noise** |
+| Too much gives | **Underfitting** | **Overfitting** |
 | Model is | **Too simple** | **Too complex** |
-| Train error | **High** | **Low** |
-| Test error | **High** | **High** |
+| **Training error** | **High** | **Low** |
+| **Test error** | **High** | **High** |
+| Fix by | More complexity, more features, boosting | Simpler model, more data, regularization, bagging |
 
-**Dartboard analogy:** *High bias* = all your darts land tightly together but far from the bullseye. *High variance* = your darts are scattered everywhere, averaging near the bullseye but individually unreliable.
+> **How to diagnose in practice — compare the two errors.**
+> - Train error **high**, test error **high** → **high bias** (underfitting)
+> - Train error **low**, test error **high** → **high variance** (overfitting)
+> - Both low → you are done
 
 ---
 
 ## 2. Bias–Variance Tradeoff
 
-> **Definition:** A good model should **not have high bias and/or high variance**. Balancing them is called the **Bias–Variance Tradeoff**.
+> **Definition:** A good model should **not have high bias and/or high variance.** Balancing them is the **Bias–Variance Tradeoff.**
 
 The two governing statements from the slides:
 
@@ -47,6 +71,20 @@ The two governing statements from the slides:
 Total Error = Bias² + Variance + Irreducible Error
 ```
 
+*(The **irreducible error** is noise inherent in the data. No model can remove it — if two identical houses sold for different prices, no algorithm can explain the difference.)*
+
+### See it with polynomial degree
+
+Fit the same data with polynomials of rising degree:
+
+| Degree | What the curve does | Train error | Test error | Diagnosis |
+|---|---|---|---|---|
+| **1** (straight line) | Too rigid; misses the curve | **High (25)** | **High (27)** | **High bias — underfit** |
+| **3** | Follows the real trend | Low (8) | **Low (9)** | **Just right** |
+| **15** | Wiggles through every point | **Almost 0 (0.1)** | **High (40)** | **High variance — overfit** |
+
+Notice degree 15 has the **best possible training score and the worst test score.** That is the signature of overfitting, and it is why training accuracy alone must never be trusted.
+
 ```
 error
   │╲                                    ╱
@@ -54,19 +92,29 @@ error
   │  ╲___                       ╱
   │      ╲___             ___╱   ← Variance (rises with complexity)
   │          ╲______ ___╱
-  │      Bias ╲_____╱
+  │      Bias ╲_____╱             ← Bias (falls with complexity)
   └────────────┬────────────────► model complexity
           sweet spot
 ```
 
-**Reducing bias:** more complex model, more features, less regularization, boosting.
-**Reducing variance:** simpler model, more training data, regularization, bagging.
+**Why it is a *tradeoff*:** push complexity down and bias grows; push it up and variance grows. You cannot eliminate both, so you find the minimum of their sum.
+
+**Reducing bias:** more complex model, more features, less regularization, **boosting**.
+**Reducing variance:** simpler model, **more training data**, regularization, **bagging**.
 
 ---
 
 ## 3. Generative vs Discriminative Models
 
+### The distinction in one image
+
+Imagine separating photos of cats and dogs.
+
+- A **generative** model studies each animal until it could **draw a cat from memory.** To classify, it asks: *"which of my mental pictures does this photo resemble more?"*
+- A **discriminative** model never learns what a cat looks like. It only learns the **dividing rule**: *"pointy ears and whiskers → cat."* It could not draw either animal, but it separates them very well — often better, because it spent all its effort on the border rather than the whole picture.
+
 ### Generative Model
+
 > A **Generative Model explicitly models the ACTUAL DISTRIBUTION of each class.**
 
 Steps:
@@ -75,12 +123,13 @@ Steps:
 3. **Use Bayes' rule to calculate P(Y|X = x)**
 
 Properties:
-- This is an **INDIRECT computation of P(Y|X) through Bayes' rule**
-- **But it CAN generate a sample of the data** (hence "generative")
+- **INDIRECT computation of P(Y|X) through Bayes' rule**
+- **But it CAN generate a sample of the data** — hence "generative"
 
-**Example: Naive Bayes classifier**
+**Example: Naive Bayes classifier.** *(This is literally what note 05 does: it learns P(Sunny|Yes), P(Cool|Yes)… — a full description of what a "Yes" day looks like. Given those tables you could invent a plausible new Yes-day.)*
 
 ### Discriminative Model
+
 > A **Discriminative Model models the DECISION BOUNDARY between the classes.**
 
 Steps:
@@ -88,10 +137,12 @@ Steps:
 2. **Estimate the parameters of P(Y|X) directly** from training data
 
 Properties:
-- It **DIRECTLY learns P(Y|X)**
+- **DIRECTLY learns P(Y|X)**
 - **But it CANNOT sample data, because P(X) is not available**
 
-**Examples: SVM, Decision Trees, k-NN, Boosting, Neural Networks** (and Logistic Regression)
+**Examples: SVM, Decision Trees, k-NN, Boosting, Neural Networks** (and Logistic Regression).
+
+*(SVM is the purest case — it does not even model probability. It only finds the widest corridor between the classes, which is nothing but a border.)*
 
 ### Comparison table
 
@@ -101,29 +152,40 @@ Properties:
 | Learns | P(X\|Y) and P(Y) | **P(Y\|X) directly** |
 | P(Y\|X) obtained | **Indirectly, via Bayes' rule** | **Directly** |
 | Can generate new data? | **Yes** | **No** — P(X) is unavailable |
+| Effort spent on | Describing each class fully | Only the border between classes |
 | Examples | **Naive Bayes** | **SVM, Decision Trees, k-NN, Boosting, Neural Networks** |
+
+> **Memory hook:** *generative* models can **generate** data. If a model could not possibly invent a new fake example, it is discriminative.
 
 ---
 
 ## 4. Parametric vs Non-parametric Models
 
 ### Parametric Model
-> A learning model that **summarizes data with a set of parameters of FIXED SIZE (independent of the number of training examples)** is called a **parametric model**.
+
+> A learning model that **summarizes data with a set of parameters of FIXED SIZE (independent of the number of training examples)** is called a **parametric model.**
 
 - **"No matter how much data you throw at a parametric model, it won't change its mind about how many parameters it needs."**
 - Has a **fixed number of parameters**
 - Makes some **strong assumptions** about the data
 
-**Examples: Linear regression, Naive Bayes** (also Logistic Regression)
+**Examples: Linear regression, Naive Bayes** (also Logistic Regression).
+
+*Made concrete:* fit `y = b0 + b1x` to **100 rows** and you store **2 numbers.** Fit it to **10 million rows** and you *still* store **2 numbers.** Once trained, the original data can be thrown away entirely.
 
 ### Non-Parametric Model
+
 > **Nonparametric methods are good when you have a LOT OF DATA and NO PRIOR KNOWLEDGE, and when you don't want to worry too much about choosing just the right features.**
 
 - **Flexible number of parameters**
 - The **number of parameters often GROWS with more data**
 - Makes **fewer assumptions** about the data
 
-**Examples: kNN, Decision Trees, SVM**
+**Examples: kNN, Decision Trees, SVM.**
+
+*Made concrete:* **kNN stores every single training row** — 10 million rows means 10 million stored points, and it needs all of them at prediction time. A decision tree grown on more data simply grows more branches.
+
+> **Important clarification:** "non-parametric" does **NOT** mean "has no parameters." It means the **number** of parameters is not fixed in advance — it is decided by the data.
 
 ### Comparison table
 
@@ -131,46 +193,90 @@ Properties:
 |---|---|---|
 | Number of parameters | **Fixed**, independent of data size | **Flexible**, grows with data |
 | Assumptions about data | **Strong** | **Fewer** |
-| Needs a lot of data? | No | **Yes, benefits from lots of data** |
-| Prior knowledge needed? | Yes (right functional form) | **No** |
+| Needs a lot of data? | No — works with little | **Yes, benefits from lots** |
+| Prior knowledge needed? | Yes — you must pick the right form | **No** |
+| Memory after training | Small and constant | Grows with the dataset |
+| Prediction speed | Fast | Slower |
+| Risk | Underfitting if the assumed form is wrong | Overfitting; heavy memory |
 | Examples | **Linear regression, Naive Bayes** | **kNN, Decision Trees, SVM** |
-
-> **Note:** "Non-parametric" does **not** mean "no parameters" — it means the *number* of parameters is not fixed in advance.
 
 ---
 
 ## 5. Class Imbalance
 
 ### The problem
-> The assumption that datasets are **balanced** — i.e. there are as many **positive examples of the concept as negative ones** — **is not always true in real-world data.**
 
-Consequences:
+> The assumption that datasets are **balanced** — as many **positive examples of the concept as negative ones** — **is not always true in real-world data.**
+
 - **Standard learners are often BIASED TOWARDS THE MAJORITY CLASS.**
-- As a result, examples from the **overwhelming (majority) class are well-classified**, whereas examples from the **minority class tend to be MISCLASSIFIED**.
+- Examples from the **overwhelming class are well-classified**, whereas examples from the **minority class tend to be MISCLASSIFIED.**
+
+### Why this is worse than it sounds
+
+Take fraud detection: **99.8% legitimate, 0.2% fraud.** Consider the laziest possible model:
+
+```python
+def predict(transaction):
+    return "legitimate"      # always, no matter what
+```
+
+**Accuracy: 99.8%.** It looks like a triumph and it catches **zero fraud** — the only thing anyone actually wanted.
+
+The confusion matrix exposes it instantly:
+
+| | Predicted Fraud | Predicted Legit |
+|---|---|---|
+| **Actual Fraud** | **0** | **200** ← every fraud missed |
+| **Actual Legit** | 0 | 99,800 |
+
+**Accuracy 99.8%, Recall 0%.** This is exactly why note 09 insists that **accuracy is a bad metric under class skew** — use **precision, recall and the P-R curve** instead.
+
+**Why models drift this way:** training minimises total error. With 99.8% of the data in one class, ignoring the minority *is* the mathematically optimal strategy. The algorithm is not broken — it is answering the question you accidentally asked.
 
 **Algorithm sensitivity (memorise):**
 - **Decision Trees are SENSITIVE to class imbalance.**
 - **Naive Bayes (NB) is LESS PRONE to class imbalance.**
 
-*Real-world example:* in fraud detection, 99.8% of transactions are legitimate. A model that predicts "not fraud" every single time scores 99.8% accuracy while catching zero fraud — which is why **accuracy is a bad metric under class skew** (see note 09).
+*(A tree splits to maximise purity, and a node that is already 99.8% pure looks perfect, so it never splits further to find the rare class. Naive Bayes estimates each class's likelihoods separately, so the minority class still gets its own honest probability model.)*
 
 ### Handling Class Imbalance
 
 **A. At the DATA level — Re-Sampling**
-- **Oversampling** (Random or Directed)
-- **Undersampling** (Random or Directed)
+- **Oversampling** (Random or Directed) — duplicate/create more minority examples
+- **Undersampling** (Random or Directed) — remove majority examples
 - **Active Sampling**
 
+```
+BEFORE:   ●●●●●●●●●●●●●●●●●●●●  ○○        (20 majority, 2 minority)
+
+Oversample:   ●●●●●●●●●●●●●●●●●●●●  ○○○○○○○○○○○○○○○○○○○○
+              ↑ majority untouched, minority multiplied up
+
+Undersample:  ●●  ○○
+              ↑ majority thrown away — note how much data you just lost
+```
+
 **B. At the ALGORITHMIC level**
-- **Adjusting the costs** (make misclassifying the minority class more expensive)
-- **Adjusting the decision threshold**
+- **Adjusting the costs** — tell the algorithm a missed fraud costs 100× a false alarm, so ignoring the minority is no longer optimal
+- **Adjusting the decision threshold** — instead of 0.5, flag anything above 0.2 as fraud (exactly the cut-off idea from note 04)
 
 ### Two crucial findings stated in the slides
 - **Undersampling (random and directed) is NOT effective and can even HURT performance.**
+  *(Obvious once you see the picture above — you delete 90% of your genuine data, so the model now has almost nothing to learn from.)*
 - **Random oversampling helps quite dramatically at all complexity levels.**
 
 ### SMOTE
-> **SMOTE = Synthetic Minority Oversampling Technique** — an oversampling method that **creates new synthetic minority-class examples** (by interpolating between existing minority points) rather than merely duplicating existing ones.
+
+> **SMOTE = Synthetic Minority Oversampling Technique** — it **creates NEW synthetic minority examples** by interpolating between existing minority points, rather than merely duplicating them.
+
+**How it works:** take a minority point, find one of its nearest minority neighbours, and place a brand-new artificial point somewhere on the line between them.
+
+```
+Plain oversampling:   ○ ○         →   ○○○○ ○○○○     (the same 2 points, copied)
+SMOTE:                ○ ○         →   ○ ⊙ ⊙ ○       (⊙ = new points in between)
+```
+
+**Why that is better:** duplicating a point tells the model nothing new and encourages it to memorise that exact location. SMOTE fills in the *region* where minority examples live, so the model learns a genuine area rather than a few repeated dots.
 
 ---
 
@@ -186,6 +292,8 @@ Consequences:
 | **k-NN** | **Discriminative** | **Non-parametric** |
 | **Boosting** | **Discriminative** | — |
 | **Neural Networks** | **Discriminative** | — |
+
+> **The shortcut for the exam: Naive Bayes is the odd one out — it is the only GENERATIVE model in this syllabus.**
 
 ---
 

@@ -6,13 +6,22 @@
 
 ## 1. What is Naive Bayes?
 
-- Naive Bayes is a **simple but powerful algorithm which uses probability**, i.e. **Bayes' Theorem**.
-- The name has **two parts: "Naive" and "Bayes"**.
+- Naive Bayes is a **simple but powerful algorithm which uses probability**, i.e. **Bayes' Theorem.**
+- The name has **two parts: "Naive" and "Bayes".**
 
 | Part | Meaning |
 |---|---|
 | **"Naive"** | It **assumes that the presence of a feature in a class is unrelated to any other feature** — i.e. all features are **conditionally independent**. This assumption is naive (unrealistic), hence the name. |
-| **"Bayes"** | It applies **Bayes' theorem for conditional probability**. |
+| **"Bayes"** | It applies **Bayes' theorem for conditional probability.** |
+
+### The idea in everyday terms
+
+You get an email containing the words *"free"*, *"winner"* and *"click"*. You ask two questions:
+
+- **If this were spam**, how likely am I to see these words? → *Very likely.*
+- **If this were a normal email**, how likely am I to see these words? → *Very unlikely.*
+
+Spam wins, so you classify it as spam. **That is the entire algorithm.** Everything below is that intuition written formally.
 
 ---
 
@@ -24,73 +33,159 @@ P(C | X) = ───────────────────
                   P(X)
 ```
 
-| Term | Name | Meaning |
-|---|---|---|
-| **P(C \| X)** | **Posterior** probability | Probability of class C **given** the evidence X — what we want |
-| **P(X \| C)** | **Likelihood** | Probability of seeing the evidence X if the class were C |
-| **P(C)** | **Prior** probability | Probability of class C before seeing any evidence |
-| **P(X)** | **Evidence / marginal** | Probability of the evidence overall |
+| Term | Name | Meaning | Spam example |
+|---|---|---|---|
+| **P(C \| X)** | **Posterior** | Probability of class C **given** evidence X — what we want | P(spam given these words) |
+| **P(X \| C)** | **Likelihood** | Probability of the evidence if the class were C | P(these words appear, in spam) |
+| **P(C)** | **Prior** | Probability of class C before seeing evidence | 40% of all mail is spam |
+| **P(X)** | **Evidence** | Probability of the evidence overall | P(these words in any email) |
+
+**How to keep them straight:** the **prior** is what you believed *before* looking; the **posterior** is what you believe *after* looking. Bayes' theorem is the formal rule for updating a belief when evidence arrives.
 
 ### The Naive assumption applied
-For features x₁, x₂, …, xₙ, the naive independence assumption lets us write:
+
+Properly, you would need P(all features together | class) — but with 20 features you would need astronomically many examples to estimate it. So Naive Bayes assumes independence and just multiplies:
 
 ```
 P(x1, x2, ..., xn | C) = P(x1|C) · P(x2|C) · ... · P(xn|C)
 ```
 
-That is: **just multiply the individual conditional probabilities**. This turns an impossible-to-estimate joint probability into a handful of easy counts.
+An impossible joint probability becomes a handful of easy counts.
+
+**Is the assumption true?** Almost never. In the weather data, "Sunny" and "Hot" clearly travel together. **And yet the algorithm works well anyway** — because for *classification* you only need the right class to score highest, not the probabilities themselves to be accurate.
 
 ### The MAP rule
-Since **P(X) is the same for every class**, we can ignore the denominator and simply pick the class with the largest numerator:
+
+**P(X) is the same for every class**, so it cannot change which class wins. Drop it and compare numerators:
 
 ```
 Predicted class = argmax over C of  [ P(x1|C)·P(x2|C)·…·P(xn|C) · P(C) ]
 ```
 
-This is the **MAP rule** (**Maximum A Posteriori**).
+This is the **MAP rule** (**Maximum A Posteriori**) — *"pick whichever class has the biggest likelihood × prior".*
 
 ---
 
-## 3. Worked Example — The "Play Tennis" Dataset
+## 3. Fully Worked Example — the "Play Tennis" Dataset
 
-### Training phase
-Count frequencies from the training data and build **look-up tables** of:
-- **P(feature value | class)** for every feature, and
-- the **prior P(class)**.
+> The slides show this example as images. Below is the standard 14-row dataset those images use — reconstructed here so you can follow every arithmetic step. **The final numbers match the slides exactly (0.0053 vs 0.0206), which confirms it is the same data.**
+
+### The training data (14 days)
+
+| Day | Outlook | Temperature | Humidity | Wind | **Play** |
+|---|---|---|---|---|---|
+| 1 | Sunny | Hot | High | Weak | **No** |
+| 2 | Sunny | Hot | High | Strong | **No** |
+| 3 | Overcast | Hot | High | Weak | **Yes** |
+| 4 | Rain | Mild | High | Weak | **Yes** |
+| 5 | Rain | Cool | Normal | Weak | **Yes** |
+| 6 | Rain | Cool | Normal | Strong | **No** |
+| 7 | Overcast | Cool | Normal | Strong | **Yes** |
+| 8 | Sunny | Mild | High | Weak | **No** |
+| 9 | Sunny | Cool | Normal | Weak | **Yes** |
+| 10 | Rain | Mild | Normal | Weak | **Yes** |
+| 11 | Sunny | Mild | Normal | Strong | **Yes** |
+| 12 | Overcast | Mild | High | Strong | **Yes** |
+| 13 | Overcast | Hot | Normal | Weak | **Yes** |
+| 14 | Rain | Mild | High | Strong | **No** |
+
+**Counts: 9 Yes, 5 No, out of 14 days.**
+
+### Training phase = counting and building look-up tables
+
+Naive Bayes "training" is nothing but counting frequencies. There is no gradient descent, no iteration — one pass through the data and you are done. That is why it is so fast.
+
+**Priors:**
+```
+P(Play = Yes) = 9/14 = 0.643
+P(Play = No)  = 5/14 = 0.357
+```
+
+**Outlook** (count each value within each class):
+
+| Outlook | Yes | No | P(·\|Yes) | P(·\|No) |
+|---|---|---|---|---|
+| Sunny | 2 | 3 | **2/9** | **3/5** |
+| Overcast | 4 | 0 | 4/9 | 0/5 |
+| Rain | 3 | 2 | 3/9 | 2/5 |
+
+**Temperature:**
+
+| Temperature | Yes | No | P(·\|Yes) | P(·\|No) |
+|---|---|---|---|---|
+| Hot | 2 | 2 | 2/9 | 2/5 |
+| Mild | 4 | 2 | 4/9 | 2/5 |
+| Cool | 3 | 1 | **3/9** | **1/5** |
+
+**Humidity:**
+
+| Humidity | Yes | No | P(·\|Yes) | P(·\|No) |
+|---|---|---|---|---|
+| High | 3 | 4 | **3/9** | **4/5** |
+| Normal | 6 | 1 | 6/9 | 1/5 |
+
+**Wind:**
+
+| Wind | Yes | No | P(·\|Yes) | P(·\|No) |
+|---|---|---|---|---|
+| Weak | 6 | 2 | 6/9 | 2/5 |
+| Strong | 3 | 3 | **3/9** | **3/5** |
 
 ### Test / prediction phase
-Given a new data point:
+
+Given the new day from the slides:
 
 ```
 x' = (Outlook = Sunny, Temperature = Cool, Humidity = High, Wind = Strong)
 ```
 
-The NB algorithm **refers to the look-up tables** and applies the **MAP rule**:
+The algorithm **refers to the look-up tables** and applies the **MAP rule**.
 
+**Score for "Yes":**
 ```
-P(Yes | x') ∝ [P(Sunny|Yes)·P(Cool|Yes)·P(High|Yes)·P(Strong|Yes)] · P(Play=Yes) = 0.0053
-P(No  | x') ∝ [P(Sunny|No) ·P(Cool|No) ·P(High|No) ·P(Strong|No) ] · P(Play=No)  = 0.0206
+P(Sunny|Yes) × P(Cool|Yes) × P(High|Yes) × P(Strong|Yes) × P(Yes)
+  =  (2/9)  ×  (3/9)  ×  (3/9)  ×  (3/9)  ×  (9/14)
+  =  0.2222 × 0.3333 × 0.3333 × 0.3333 × 0.6429
+  =  0.0053
 ```
 
-**Since P(Yes|x') < P(No|x'), the label predicted for x' is "No".**
+**Score for "No":**
+```
+P(Sunny|No) × P(Cool|No) × P(High|No) × P(Strong|No) × P(No)
+  =  (3/5)  ×  (1/5)  ×  (4/5)  ×  (3/5)  ×  (5/14)
+  =  0.6    × 0.2    × 0.8    × 0.6    × 0.3571
+  =  0.0206
+```
 
-> **Memorise these numbers — they appear directly in the slides: 0.0053 (Yes) vs 0.0206 (No) → predict "No".**
+**Since P(Yes|x') = 0.0053 < P(No|x') = 0.0206, the label predicted for x' is "No".**
+
+> **Memorise these two numbers — they appear directly in the slides: 0.0053 (Yes) vs 0.0206 (No) → predict "No".**
+
+**Sanity check on the result:** Sunny days in this dataset are mostly No (3 of 5), High humidity leans No, Strong wind is a coin flip. The evidence stacks against playing — the arithmetic simply confirms what the data pattern suggests.
+
+**If you want actual probabilities**, normalise so they sum to 1:
+```
+P(No | x')  = 0.0206 / (0.0206 + 0.0053) = 0.795  → about 80% confident
+P(Yes | x') = 0.0053 / (0.0206 + 0.0053) = 0.205
+```
 
 ### Second example — Mammals vs Non-mammals
-For an instance A, the slides compute `P(A|M)·P(M)` and `P(A|N)·P(N)`.
+
+The slides compute `P(A|M)·P(M)` and `P(A|N)·P(N)` for an animal with attributes such as *(gives birth = yes, can fly = no, lives in water = yes, has legs = no)*.
+
 **Since P(A|M)·P(M) > P(A|N)·P(N), it is predicted as Mammals.**
 
-> The pattern is always the same: **compute likelihood × prior for each class, pick the bigger one.**
+> The pattern never changes: **compute likelihood × prior for each class, pick the bigger one.**
 
 ---
 
 ## 4. Gaussian Naive Bayes
 
-**Problem:** the counting approach works for *categorical* features. What about *continuous* features like age or salary?
+**The problem:** counting works for *categorical* features (Sunny, Rain). But what about **age = 34.7** or **salary = ₹62,431**? You cannot count how many times exactly 34.7 appeared — probably once, or never.
 
-**Solution — Gaussian Naive Bayes:**
+**The solution:**
 - **Continuous values associated with each feature are assumed to be distributed according to a Gaussian (Normal) distribution.**
-- The **likelihood of the features is assumed to be Gaussian**, so the conditional probability is given by the normal density:
+- **The likelihood of the features is assumed to be Gaussian**, so the conditional probability comes from the normal density:
 
 ```
                      1                (x − μc)²
@@ -98,34 +193,62 @@ P(x | c) = ───────────────────  · exp( �
             √(2π·σc²)                     2σc²
 ```
 
-where **μc** and **σc**  are the mean and standard deviation of that feature within class c.
+where **μc** and **σc** are the **mean and standard deviation of that feature within class c.**
 
-**Other variants worth knowing:** *Multinomial NB* (word counts, text classification) and *Bernoulli NB* (binary features).
+**How this works in practice:** instead of counting, you compute two numbers per feature per class. For a loan dataset:
+
+```
+Among people who repaid:      mean age = 65,  std = 12
+Among people who defaulted:   mean age = 42,  std = 10
+```
+
+A new applicant aged 68 lands near the centre of the "repaid" bell curve and out in the tail of the "defaulted" one — so the age feature votes strongly for "repaid". **The bell curve replaces the frequency count.**
+
+**Other variants worth knowing:** *Multinomial NB* (word counts — the standard choice for text classification) and *Bernoulli NB* (binary present/absent features).
 
 ---
 
 ## 5. Applications
 
 - **Digits classification**
-- **Spam filtering**
+- **Spam filtering** — the classic; nearly every early spam filter was Naive Bayes
 - **Weather prediction**
 - **Stock market prediction**
+
+*Why it dominates text tasks:* documents have thousands of features (one per word), which cripples most algorithms. Naive Bayes just multiplies thousands of small probabilities and stays fast.
 
 ---
 
 ## 6. Pros and Cons
 
 ### Pros
-- NB is a **fast and accurate** method for prediction.
-- It has **very low computation cost**.
-- It can **efficiently work on both small and large datasets**.
-- It is **robust to noise points and outliers**.
+- NB is a **fast and accurate** method for prediction — training is a single counting pass
+- It has **very low computation cost**
+- It can **efficiently work on both small and large datasets** — it needs surprisingly little data, since it estimates each feature separately
+- It is **robust to noise points and outliers** — one weird row barely shifts a frequency count
 
 ### Cons
 - **NB assumes features are independent of each other. In practice this is almost impossible.**
-- **If there is no training tuple of a particular class (or feature value), it causes a zero posterior probability**, and the model is unable to make predictions. This is known as the **Zero Probability / Zero Frequency Problem**.
+- **If there is no training tuple of a particular class, this causes a zero posterior probability, and the model is unable to make predictions.** This is the **Zero Probability / Zero Frequency Problem.**
 
-> **Fix for the Zero Probability problem:** **Laplace smoothing** (add-one smoothing) — add 1 to every count so no probability is ever exactly zero. In sklearn's `GaussianNB` the analogous parameter is **`var_smoothing=1e-09`**.
+### The Zero Probability problem, made concrete
+
+In the tennis table, look at **Overcast + No**: the count is **0**. So `P(Overcast|No) = 0/5 = 0`.
+
+Now classify *(Overcast, Hot, High, Strong)* for the "No" class:
+```
+0  ×  (2/5)  ×  (4/5)  ×  (3/5)  ×  (5/14)  =  0
+```
+**One single zero annihilates the entire product**, no matter how strongly the other three features argued for "No". A multiplication chain is only as strong as its weakest link.
+
+**The fix — Laplace smoothing (add-one smoothing):** add 1 to every count so nothing is ever exactly zero.
+```
+Before:  P(Overcast|No) = 0/5     = 0
+After:   P(Overcast|No) = (0+1)/(5+3) = 1/8 = 0.125
+```
+*(The denominator gains 3 because Outlook has 3 possible values.)* The probability is now tiny but non-zero — it weakens the case without destroying it.
+
+In sklearn's `GaussianNB` the analogous parameter is **`var_smoothing=1e-09`**.
 
 ---
 
@@ -151,9 +274,10 @@ print("Naive Bayes Accuracy = ", NB.score(X_test, y_test))
 
 | Property | Naive Bayes |
 |---|---|
-| Generative or discriminative? | **Generative** — it models P(X\|Y) and P(Y), then uses Bayes' rule |
+| Generative or discriminative? | **Generative** — models P(X\|Y) and P(Y), then applies Bayes' rule |
 | Parametric or non-parametric? | **Parametric** |
-| Sensitive to class imbalance? | **Less prone** to class imbalance (unlike Decision Trees, which are sensitive) |
+| Sensitive to class imbalance? | **Less prone** than Decision Trees, which are sensitive |
+| Training speed | Extremely fast — one counting pass, no iteration |
 
 ---
 

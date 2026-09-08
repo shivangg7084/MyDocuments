@@ -6,23 +6,32 @@
 
 ## 1. What is Logistic Regression?
 
-- Logistic Regression is a **statistical machine learning model used to CLASSIFY data**.
-- It uses **predictive analysis based on the concept of probability**.
+### Why linear regression fails at yes/no questions
+
+Suppose you predict loan repayment (1 = repays, 0 = defaults) using linear regression on salary. You get a straight line — and immediately hit two absurdities:
+
+- For a very high salary the line predicts **1.4**. What is a 140% probability?
+- For a very low salary it predicts **−0.3**. A negative probability?
+
+A straight line runs to ±infinity, but a yes/no answer must live between 0 and 1. **Logistic regression fixes this by bending the line into an S-shape that can never escape 0 and 1.**
+
+### The definition from the slides
+
+- Logistic Regression is a **statistical machine learning model used to CLASSIFY data.**
+- It uses **predictive analysis based on the concept of probability.**
 - It finds the **linear relationship between the target and one or more predictors** based on existing data.
 
-> **Trap alert:** Despite the name "regression", **Logistic Regression is a CLASSIFICATION algorithm**. This is one of the most asked MCQs.
+> **Trap alert:** despite the name "regression", **Logistic Regression is a CLASSIFICATION algorithm.** This is the single most asked trick question in the syllabus. *(The name is historical — the linear part inside it is genuine regression, but the output is a class.)*
 
 ### The target variable
-The target / dependent variable in logistic regression is a **decision**:
-- **YES / NO**, or
-- **TRUE / FALSE**, or
-- **0 / 1**
+The target / dependent variable is a **decision**:
+- **YES / NO**, or **TRUE / FALSE**, or **0 / 1**
 
 ### Examples from the slides
-1. **Loan eligibility** — Are applicants eligible for a loan (Yes/No)? Based on: **Age, Income, Credit history, Current EMI**.
-2. **Spam detection** — Is the incoming mail spam (Yes/No)? Based on: **Subject, Sender mail-id, Body of mail, Mail server**.
+1. **Loan eligibility** — are applicants eligible for a loan (Yes/No)? Based on **Age, Income, Credit history, Current EMI**.
+2. **Spam detection** — is the incoming mail spam (Yes/No)? Based on **Subject, Sender mail-id, Body of mail, Mail server**.
 
-### Sample data used in the slides
+### The sample data used in the slides
 
 | Age | Salary | Loan Repaid |
 |---|---|---|
@@ -47,46 +56,82 @@ We want a **binary classifier** `f(age, salary)` that outputs **Y = 0 (will not 
 
 ## 2. Logistic Regression as a Classifier
 
-> **Key point:** Instead of giving binary values Y=0 or Y=1 directly, the classifier **predicts the PROBABILITY of belonging to class 1**.
+> **Key point:** instead of giving binary values Y=0 or Y=1 directly, the classifier **predicts the PROBABILITY of belonging to class 1.**
 
-### The logit
+This is genuinely useful. "This applicant will default" is a blunt statement; **"this applicant has a 73% chance of defaulting"** lets a bank set its own risk appetite.
+
+### Step 1 — the logit (the straight-line part)
+
 For **k independent variables**, the quantity
 
 ```
-a0 + a1·x1 + a2·x2 + … + ak·xk
+z = a0 + a1·x1 + a2·x2 + … + ak·xk
 ```
 
-is called the **logit** (also written as **W·X**, the dot product of the weight vector and the feature vector).
+is called the **logit** (also written **W·X**, the dot product of the weight and feature vectors). This is an ordinary linear combination — it can be any number from −∞ to +∞.
 
-### The sigmoid (logistic) function
+### Step 2 — the sigmoid (the squashing part)
 
 ```
         1
-p = ─────────────
-    1 + e^(−z)          where z = logit = W·X
+p = ─────────────          where z = the logit
+    1 + e^(−z)
 ```
 
-The logistic classifier forms a **sigmoid function** with respect to the X variables:
+### Watch the sigmoid work — actual numbers
 
-| If the logit moves toward… | …the probability goes to |
-|---|---|
-| **+ infinity** | **close to 1** |
-| **− infinity** | **down to zero** |
-| **0** | **0.5** |
+| z (logit) | e^(−z) | p = 1/(1+e^(−z)) | Meaning |
+|---|---|---|---|
+| **−4** | 54.60 | **0.018** | Almost certainly class 0 |
+| **−2** | 7.39 | **0.119** | Probably class 0 |
+| **0** | 1.00 | **0.500** | Completely undecided |
+| **+2** | 0.135 | **0.881** | Probably class 1 |
+| **+4** | 0.018 | **0.982** | Almost certainly class 1 |
 
-The sigmoid squashes any real number into the range **(0, 1)** — which is exactly what a probability needs.
+Plotted, these points trace the S-curve:
+
+```
+p
+1.0 |                        ● ● ●───────
+    |                    ●
+0.5 |- - - - - - - - - ● - - - - - - - -
+    |              ●
+0.0 |───── ● ● ●
+    └──────────────────────────────────► z
+        −4    −2    0    +2    +4
+```
+
+The slides state this as: **if the logit moves towards +infinity the probability moves close to 1, and if the logit moves towards −infinity the probability comes down to zero.**
+
+**The key property:** the sigmoid squashes *any* real number into **(0, 1)** — never reaching either end, which is exactly what a probability needs.
+
+### Worked end-to-end prediction
+
+Say training produced:
+```
+z = −4 + 0.05 × Age + 0.00004 × Salary
+```
+For an applicant aged **60** earning **₹80,000**:
+```
+z = −4 + 0.05(60) + 0.00004(80000)
+  = −4 + 3 + 3.2
+  = 2.2
+
+p = 1 / (1 + e^(−2.2)) = 1 / (1 + 0.1108) = 0.900
+```
+**→ 90% probability of repaying. Since 0.90 > 0.5, predict class 1 (will repay).**
 
 ### Learning P(Y|X) directly
-- Let **X** be the data instance and **Y** the class label → logistic regression **learns P(Y|X) directly**.
+- Let **X** be the data instance and **Y** the class label → logistic regression **learns P(Y|X) directly.**
 - Let **W = (W1, W2, … Wn)** and **X = (X1, X2, …, Xn)**; **W·X** is the **dot product**.
 
-> **Because it models P(Y|X) directly, Logistic Regression is a DISCRIMINATIVE model** (see note 08).
+> Because it models P(Y|X) directly, **Logistic Regression is a DISCRIMINATIVE model** — it learns *where the border is*, not what each class looks like (see note 08).
 
 ---
 
 ## 3. Decision Boundary
 
-The **decision boundary** is the line (or surface) that separates the predicted classes.
+The **decision boundary** is the line (or surface) separating the predicted classes. It is exactly the place where **z = 0**, because that is where **p = 0.5** — the point of maximum indecision.
 
 Using the loan example:
 
@@ -95,19 +140,33 @@ Using the loan example:
 | **Above the line** | `a0 + a1·age + a2·salary ≥ 0` | **p > 0.5** | **Y = 1** |
 | **Below the line** | `a0 + a1·age + a2·salary ≤ 0` | **p < 0.5** | **Y = 0** |
 
-### Choosing the cut-off
-The slides ask: *"How to decide on the decision boundary / cut-off value?"* Three options are shown:
-- **Cut-off = 0.5** (the default)
-- **Cut-off > 0.5** — stricter about predicting class 1 (fewer positives, higher precision)
-- **Cut-off < 0.5** — more willing to predict class 1 (more positives, higher recall)
+```
+Salary
+   │   ○   ○  ○      ○ = will repay (Y=1)
+   │  ○  ○ ╱ ○
+   │ ○   ╱  ○        ← the decision boundary (z = 0, p = 0.5)
+   │ ● ╱ ●   ●
+   │ ╱ ●  ●  ●       ● = will not repay (Y=0)
+   └────────────────► Age
+```
 
-> **Practical meaning:** Moving the cut-off trades off **False Positives against False Negatives**. This is exactly what the **ROC curve** (note 09) visualises — it plots performance as the threshold is varied.
+### Choosing the cut-off — and why you would move it
+
+The slides show three options: **cut-off = 0.5** (default), **> 0.5**, and **< 0.5**. This is not a technicality — it is a business decision:
+
+| Cut-off | Effect | When you would want it |
+|---|---|---|
+| **Raise to 0.8** | Predicts "positive" **rarely**, only when very sure → fewer false alarms, more misses | Approving expensive loans — a wrong yes is costly |
+| **0.5** | Neutral default | No strong preference |
+| **Lower to 0.2** | Predicts "positive" **readily** → catches nearly everything, many false alarms | Cancer screening — a missed case is far worse than an extra test |
+
+> **The trade-off never disappears:** moving the cut-off trades **False Positives against False Negatives**. You choose which mistake you would rather make. This is precisely what the **ROC curve** in note 09 visualises — performance across every possible cut-off.
 
 ---
 
 ## 4. Cost Function
 
-For the classifier function `hθ(x)` (the sigmoid output), the cost function used is the **log-loss / cross-entropy**:
+For the classifier function `hθ(x)` (the sigmoid output), the cost function is the **log-loss / cross-entropy**:
 
 ```
 Cost(hθ(x), y) =  −log(hθ(x))       if y = 1
@@ -120,24 +179,49 @@ Combined over m training examples:
 J(θ) = −(1/m) Σ [ y·log(hθ(x)) + (1−y)·log(1 − hθ(x)) ]
 ```
 
-**Why not plain squared error?** Because with the sigmoid, squared error gives a **non-convex** cost surface with many local minima; the log-loss form is **convex**, so gradient descent reliably finds the global minimum.
+### Why this shape — see the penalty in numbers
 
-**Intuition:** if the true label is 1 and the model predicts 0.99, `−log(0.99)` ≈ 0 (almost no penalty). If it predicts 0.01, `−log(0.01)` is huge — confident and wrong is punished heavily.
+Take a case where the **true label is 1**:
+
+| Model predicted | Cost = −log(p) | Verdict |
+|---|---|---|
+| 0.99 | **0.01** | Confident and right → almost no penalty |
+| 0.70 | **0.36** | Right but unsure → small penalty |
+| 0.50 | **0.69** | No opinion → moderate penalty |
+| 0.10 | **2.30** | Wrong → heavy penalty |
+| 0.01 | **4.61** | Confidently wrong → brutal penalty |
+
+**The lesson the loss teaches the model: being wrong is bad, but being *confidently* wrong is catastrophic.** As p → 0 while the truth is 1, the cost heads to infinity. This is why a well-trained logistic model is cautious about extreme probabilities unless the evidence is overwhelming.
+
+**Why not plain squared error?** With the sigmoid inside, squared error produces a **non-convex** cost surface — a landscape full of valleys where gradient descent gets stuck in a local minimum and never reaches the best answer. The log-loss form is **convex**: one single valley, so gradient descent always slides to the true global minimum.
 
 ---
 
 ## 5. Multiclass Classification
 
-Logistic regression is naturally binary, but it can be extended to more than two classes.
+Logistic regression is naturally binary, but real problems often have more classes.
 
-**Examples given:**
+**Examples given in the slides:**
 - **News classification:** politics, movies, entertainment, sports
 - **Weather:** Sunny, Cloudy, Rain, Snow
 
-**How to perform multiclass classification:**
-- **One-vs-Rest (OvR / One-vs-All):** train **one classifier per class** — that class vs everything else. At prediction time, pick the class whose classifier gives the **highest probability**.
-- **One-vs-One (OvO):** train a classifier for **every pair** of classes and take a **majority vote**.
-- **Softmax / Multinomial logistic regression:** generalises the sigmoid to k classes so the probabilities sum to 1.
+### One-vs-Rest (OvR / One-vs-All) — worked
+
+Train **one classifier per class**, each answering a yes/no question. For the 4 news categories:
+
+```
+Classifier 1:  politics      vs everything else  → 0.10
+Classifier 2:  movies        vs everything else  → 0.15
+Classifier 3:  entertainment vs everything else  → 0.20
+Classifier 4:  sports        vs everything else  → 0.85  ← highest
+```
+**Predict: sports.** With k classes you train **k classifiers**.
+
+### One-vs-One (OvO)
+Train a classifier for **every pair** of classes and take a **majority vote**. With k classes that is **k(k−1)/2** classifiers — for 4 classes, 6 of them.
+
+### Softmax (Multinomial logistic regression)
+Generalises the sigmoid so that all k probabilities are produced together and **sum to exactly 1** — e.g. `[0.10, 0.15, 0.20, 0.55]`. One model instead of many.
 
 ---
 
@@ -154,7 +238,13 @@ print("Accuracy of Logistic Regression = ", log_reg.score(X_test, y_test))
 # Accuracy of Logistic Regression = 0.7863852359376726
 ```
 
-> **Benchmark to remember:** Logistic Regression ≈ **0.786** accuracy on the Census Income dataset (compare with Naive Bayes 0.785, Linear SVM 0.787, Bagging 0.852, Random Forest 0.851, AdaBoost 0.864).
+Useful extras:
+```python
+log_reg.predict_proba(X_test)   # the probabilities themselves, not just the labels
+log_reg.coef_                   # which features push towards >50K, and how hard
+```
+
+> **Benchmark to remember:** Logistic Regression ≈ **0.786** on the Census Income dataset (Naive Bayes 0.785, Linear SVM 0.787, Bagging 0.852, Random Forest 0.851, AdaBoost 0.864).
 
 ---
 
@@ -162,14 +252,14 @@ print("Accuracy of Logistic Regression = ", log_reg.score(X_test, y_test))
 
 | Question | Answer |
 |---|---|
-| Is it regression or classification? | **Classification** |
+| Regression or classification? | **Classification** |
 | What does it output? | The **probability** of belonging to class 1 |
-| What function squashes the output? | **Sigmoid / logistic function** |
+| What squashes the output? | The **sigmoid / logistic function** |
 | What is the linear part called? | The **logit** |
 | Default decision threshold? | **0.5** |
 | Cost function? | **Log-loss / cross-entropy** (convex) |
 | Generative or discriminative? | **Discriminative** — learns P(Y\|X) directly |
-| Parametric or non-parametric? | **Parametric** (fixed number of coefficients) |
+| Parametric or non-parametric? | **Parametric** (a fixed set of coefficients) |
 
 ---
 

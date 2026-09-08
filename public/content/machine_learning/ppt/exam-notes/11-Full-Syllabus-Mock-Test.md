@@ -388,7 +388,101 @@
 
 ---
 
-## Answer Key
+## Answer Key — with explanations
+
+Every answer carries the reason and the note to revisit, so a wrong answer teaches you something.
+
+### Section A — Introduction & Types of ML
+
+| Q | Ans | Why | Revise |
+|---|---|---|---|
+| 1 | **C** | ML flips it: you feed Data + Output and get the Program (model) back. | note 01 |
+| 2 | **B** | Mitchell: Task T, Experience E, Performance measure P. | note 01 |
+| 3 | **B** | Temperature is a continuous number → regression. | note 01 |
+| 4 | **A** | Stated in the slides — labelling data is costly, unlabelled data is plentiful. | note 01 |
+| 5 | **B** | RL is sequential: your action changes the situation you face next. | note 01 |
+| 6 | **B** | You understand speech effortlessly but cannot write down the rules. | note 01 |
+| 7 | **D** | Clustering needs no labels. | note 01 |
+| 8 | **C** | Reward/penalty is the defining signal of reinforcement learning. | note 01 |
+
+### Section B — Data Preprocessing & EDA
+
+| Q | Ans | Why | Revise |
+|---|---|---|---|
+| 9 | **C** | Imputation = replacing missing values with a statistic (mean/median/mode). | note 02 |
+| 10 | **B** | The |Z| > 3 rule flags it as an outlier. | note 02 |
+| 11 | **A** | IQR = Q3 − Q1 = 75th − 25th percentile. | note 02 |
+| 12 | **D** | Standardization → standard Gaussian: mean 0, std 1. | note 02 |
+| 13 | **B** | Numbering categories implies Pune(2) > Delhi(0), a ranking that does not exist. | note 02 |
+| 14 | **B** | The box spans Q1–Q3 and dots beyond the whiskers are outliers. | note 02 |
+| 15 | **A** | A heat map of df.corr() is the correlation matrix. | note 02 |
+| 16 | **D** | Scaling is a preprocessing step, not a reason data goes missing. | note 02 |
+| 17 | **B** | Deleting rows is fail-safe only when you can afford to lose them. | note 02 |
+| 18 | **C** | There is no mean of "Delhi" — use the mode or a new category. | note 02 |
+
+### Section C — Supervised Learning
+
+| Q | Ans | Why | Revise |
+|---|---|---|---|
+| 19 | **B** | Supervised learning maps inputs to outputs using labelled data. | note 03 |
+| 20 | **C** | Linear regression assumes NO strong multicollinearity. | note 03 |
+| 21 | **D** | make_pipeline(PolynomialFeatures(degree=2), LinearRegression()). | note 03 |
+| 22 | **B** | Lazy learner: fit() stores data, all work happens at prediction time. | note 03 |
+| 23 | **B** | Classification votes; regression averages. | note 03 |
+| 24 | **A** | Ridge = L2 = sum of squared coefficients. | note 03 |
+| 25 | **B** | Only Lasso drives coefficients to exactly zero. | note 03 |
+| 26 | **C** | No penalty term left, so it is ordinary least squares. | note 03 |
+| 27 | **B** | The model cannot split credit between duplicate features. | note 03 |
+| 28 | **A** | Epsilon-insensitive loss: inside the tube costs nothing. | note 03 |
+| 29 | **C** | Trees only ask "above the threshold?", which rescaling does not change. | note 03 |
+| 30 | **D** | Unrestricted depth means memorising the training set. | note 03 |
+
+### Section D — Classifiers
+
+| Q | Ans | Why | Revise |
+|---|---|---|---|
+| 31 | **B** | It outputs a probability, then applies a cut-off. | note 04 |
+| 32 | **A** | The linear combination before the sigmoid is the logit. | note 04 |
+| 33 | **B** | p > 0.5 → class 1 is the default rule. | note 04 |
+| 34 | **C** | "Naive" = features assumed conditionally independent. | note 05 |
+| 35 | **B** | P(X|C) is the likelihood; P(C|X) is the posterior. | note 05 |
+| 36 | **B** | Add-one smoothing stops any probability being exactly zero. | note 05 |
+| 37 | **D** | Gaussian NB assumes a normal distribution per feature per class. | note 05 |
+| 38 | **A** | 1992, and it made its name on handwritten digit recognition. | note 06 |
+| 39 | **B** | The exact definition: width before the boundary hits a data point. | note 06 |
+| 40 | **C** | Degree-d polynomial kernel. | note 06 |
+| 41 | **B** | That is precisely the kernel trick. | note 06 |
+| 42 | **B** | Linear scored 0.787, degree-4 polynomial only 0.583. | note 06 |
+
+### Section E — Ensembles
+
+| Q | Ans | Why | Revise |
+|---|---|---|---|
+| 43 | **C** | A group of weak learners together forms a strong learner. | note 07 |
+| 44 | **B** | Bootstrap = sampling with replacement. | note 07 |
+| 45 | **D** | Bagging averages away variance; boosting attacks bias. | note 07 |
+| 46 | **B** | Restricting features per split decorrelates the trees. | note 07 |
+| 47 | **B** | You want strong trees that are uncorrelated with each other. | note 07 |
+| 48 | **A** | Raising their weight forces the next learner to focus on them. | note 07 |
+| 49 | **B** | More accurate weak classifiers get a louder vote (higher α). | note 07 |
+| 50 | **A** | Higher tiers learn to correct the lower tiers. | note 07 |
+
+### Section F — Design, Evaluation & Dimensionality Reduction
+
+| Q | Ans | Why | Revise |
+|---|---|---|---|
+| 51 | **C** | Bias = too simple = underfit; variance = too sensitive = overfit. | note 08 |
+| 52 | **B** | Naive Bayes is the only generative model in this syllabus. | note 08 |
+| 53 | **C** | Linear regression keeps a fixed number of coefficients forever. | note 08 |
+| 54 | **B** | Stated in the slides — you throw away most of your genuine data. | note 08 |
+| 55 | **D** | SMOTE interpolates new minority points instead of copying old ones. | note 08 |
+| 56 | **B** | Bad on train AND test = too simple = underfitting. | note 09 |
+| 57 | **A** | Precision divides by what you PREDICTED; recall by what was REAL. | note 09 |
+| 58 | **B** | ROC = TPR vs FPR; P-R = precision vs recall. | note 09 |
+| 59 | **B** | Eigenvectors and eigenvalues come from the covariance matrix. | note 09 |
+| 60 | **C** | PCA compresses by variance; ICA un-mixes by independence. | note 10 |
+
+### Answer letters only (for quick marking)
 
 | Q | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -413,6 +507,19 @@
 | Q | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59 | 60 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | **Ans** | C | B | C | B | D | B | A | B | B | C |
+
+### Where to revise, by score
+
+Count your wrong answers per section — that tells you exactly which note to reopen.
+
+| Section | Questions | If you lost marks here, reread |
+|---|---|---|
+| A — Introduction & types | 1–8 | note 01 |
+| B — Preprocessing & EDA | 9–18 | note 02 |
+| C — Supervised algorithms | 19–30 | note 03 |
+| D — Classifiers | 31–42 | notes 04, 05, 06 |
+| E — Ensembles | 43–50 | note 07 |
+| F — Design & evaluation | 51–60 | notes 08, 09, 10 |
 
 ### Scoring guide
 | Score | Verdict |

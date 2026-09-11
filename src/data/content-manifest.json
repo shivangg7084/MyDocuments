@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T00:52:49.460Z",
+  "generatedAt": "2026-09-11T02:32:26.509Z",
   "root": {
     "name": "Home",
     "path": "",
@@ -315,12 +315,224 @@
             ]
           },
           {
+            "name": "LogisticRegression",
+            "path": "machine_learning/LogisticRegression",
+            "folders": [],
+            "files": [
+              {
+                "name": "5-Logistic+Regression (1).pdf",
+                "path": "machine_learning/LogisticRegression/5-Logistic+Regression (1).pdf",
+                "type": "pdf",
+                "ext": "pdf",
+                "size": 2207334
+              },
+              {
+                "name": "5-Logistic+Regression.pdf",
+                "path": "machine_learning/LogisticRegression/5-Logistic+Regression.pdf",
+                "type": "pdf",
+                "ext": "pdf",
+                "size": 2207334
+              },
+              {
+                "name": "5.3-Performance+Metrics.pdf",
+                "path": "machine_learning/LogisticRegression/5.3-Performance+Metrics.pdf",
+                "type": "pdf",
+                "ext": "pdf",
+                "size": 2098387
+              },
+              {
+                "name": "Logistic+Regression+Implementation.ipynb",
+                "path": "machine_learning/LogisticRegression/Logistic+Regression+Implementation.ipynb",
+                "type": "other",
+                "ext": "ipynb",
+                "size": 560465,
+                "title": "Logistic Regression Implementation",
+                "excerpt": "![image.png](attachment:image.png) ![image2.png](attachment:image2.png)"
+              }
+            ]
+          },
+          {
+            "name": "Ppt",
+            "path": "machine_learning/ppt",
+            "folders": [
+              {
+                "name": "Exam Notes",
+                "path": "machine_learning/ppt/exam-notes",
+                "folders": [],
+                "files": [
+                  {
+                    "name": "00-README-Study-Index.md",
+                    "path": "machine_learning/ppt/exam-notes/00-README-Study-Index.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 29612,
+                    "title": "Machine Learning — Exam Study Pack (MCQ Preparation)",
+                    "excerpt": "Plainlanguage notes for every concept in the source documents in [../](../), each followed by practice MCQs with answers. Start here. This page is not just a list of files — read i"
+                  },
+                  {
+                    "name": "01-Introduction-to-Machine-Learning.md",
+                    "path": "machine_learning/ppt/exam-notes/01-Introduction-to-Machine-Learning.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 16088,
+                    "title": "01 — Introduction to Machine Learning",
+                    "excerpt": "Source: MachineLearningIntroduction.pdf Imagine your boss asks you to write a program that detects spam email. You start writing rules: Within a week the spammers write \"FR€€ M0N€Y"
+                  },
+                  {
+                    "name": "02-EDA-and-Data-Preprocessing.md",
+                    "path": "machine_learning/ppt/exam-notes/02-EDA-and-Data-Preprocessing.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 24065,
+                    "title": "02 — Exploratory Data Analysis & Data Preprocessing",
+                    "excerpt": "Source: MachineLearningExploratoryDataAnalysisDataPreprocessing.pdf Raw data is messy. Cleaning and reshaping it so an algorithm can actually use it is called data preprocessing. A"
+                  },
+                  {
+                    "name": "03-Supervised-Learning-Regression-and-Classification.md",
+                    "path": "machine_learning/ppt/exam-notes/03-Supervised-Learning-Regression-and-Classification.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 29984,
+                    "title": "03 — Supervised Learning: Regression & Classification",
+                    "excerpt": "Source: SupervisedLearning.pdf Definition: Supervised learning is a type of machine learning where the model learns a mapping function f: X → Y from a labelled training dataset — a"
+                  },
+                  {
+                    "name": "04-Logistic-Regression.md",
+                    "path": "machine_learning/ppt/exam-notes/04-Logistic-Regression.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 15800,
+                    "title": "04 — Logistic Regression",
+                    "excerpt": "Source: MachineLearningClassifiersLogisticRegression.pptx Suppose you predict loan repayment (1 = repays, 0 = defaults) using linear regression on salary. You get a straight line —"
+                  },
+                  {
+                    "name": "05-Naive-Bayes.md",
+                    "path": "machine_learning/ppt/exam-notes/05-Naive-Bayes.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 16768,
+                    "title": "05 — Naive Bayes Classifier",
+                    "excerpt": "Source: MachineLearningClassifiersNaiveBayes.pptx Naive Bayes is a simple but powerful algorithm which uses probability, i.e. Bayes' Theorem. The name has two parts: \"Naive\" and \"B"
+                  },
+                  {
+                    "name": "06-Support-Vector-Machines.md",
+                    "path": "machine_learning/ppt/exam-notes/06-Support-Vector-Machines.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 15835,
+                    "title": "06 — Support Vector Machines (SVM)",
+                    "excerpt": "Source: MachineLearningClassifiersSVM.pptx Support Vector Machines (SVM) is a popular SUPERVISED learning model. SVM was first introduced in 1992. SVM is inspired by statistical le"
+                  },
+                  {
+                    "name": "07-Ensemble-Methods.md",
+                    "path": "machine_learning/ppt/exam-notes/07-Ensemble-Methods.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 23221,
+                    "title": "07 — Ensemble Methods (Bagging, Random Forest, Boosting, AdaBoost)",
+                    "excerpt": "Source: MachineLearningClassifiersEnsemblemethods.pptx Definition: Ensemble learning is a machine learning paradigm where multiple models are trained to solve the problem more accu"
+                  },
+                  {
+                    "name": "08-Classifier-Design-Bias-Variance-and-Class-Imbalance.md",
+                    "path": "machine_learning/ppt/exam-notes/08-Classifier-Design-Bias-Variance-and-Class-Imbalance.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 21019,
+                    "title": "08 — Classifier Design: Bias, Variance, Model Types & Class Imbalance",
+                    "excerpt": "Source: MachineLearningClassifiersClassifiersDesign.pptx Topics covered: Bias and Variance · Bias–Variance Tradeoff · Generative vs Discriminative Models · Parametric vs Nonparamet"
+                  },
+                  {
+                    "name": "09-Classifier-Evaluation-and-Metrics.md",
+                    "path": "machine_learning/ppt/exam-notes/09-Classifier-Evaluation-and-Metrics.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 24765,
+                    "title": "09 — Classifier Evaluation: Fitting, Sampling, Cross-Validation & Metrics",
+                    "excerpt": "Source: MachineLearningClassifiersClassifiersEvaluation.pptx Topics covered: Underfitting & overfitting · Training/Validation/Test sets · Data sampling · Cross Validation · Confusi"
+                  },
+                  {
+                    "name": "10-Dimensionality-Reduction-PCA-and-ICA.md",
+                    "path": "machine_learning/ppt/exam-notes/10-Dimensionality-Reduction-PCA-and-ICA.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 18759,
+                    "title": "10 — Dimensionality Reduction: Curse of Dimensionality, PCA & ICA",
+                    "excerpt": "Source: MachineLearningDimensionReductionRamya.pptx Definition: The curse of dimensionality refers to the phenomena that occur when working on HIGHDIMENSIONAL data that do not occu"
+                  },
+                  {
+                    "name": "11-Full-Syllabus-Mock-Test.md",
+                    "path": "machine_learning/ppt/exam-notes/11-Full-Syllabus-Mock-Test.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 18935,
+                    "title": "11 — Full Syllabus Mock Test (60 MCQs)",
+                    "excerpt": "Mixed questions drawn from all the documents. Try to do this closedbook in 45 minutes, then check the answer key at the bottom. Q1. In machine learning, the computer takes as input"
+                  }
+                ]
+              }
+            ],
+            "files": []
+          },
+          {
+            "name": "SupportVectorMachines",
+            "path": "machine_learning/SupportVectorMachines",
+            "folders": [],
+            "files": [
+              {
+                "name": "6-Support+Vector+Classifier.pdf",
+                "path": "machine_learning/SupportVectorMachines/6-Support+Vector+Classifier.pdf",
+                "type": "pdf",
+                "ext": "pdf",
+                "size": 2164438
+              },
+              {
+                "name": "6.1-SVR.pdf",
+                "path": "machine_learning/SupportVectorMachines/6.1-SVR.pdf",
+                "type": "pdf",
+                "ext": "pdf",
+                "size": 2816339
+              },
+              {
+                "name": "6.2-SVM+Kernels.pdf",
+                "path": "machine_learning/SupportVectorMachines/6.2-SVM+Kernels.pdf",
+                "type": "pdf",
+                "ext": "pdf",
+                "size": 724061
+              },
+              {
+                "name": "Basic+SVC+Implementation.ipynb",
+                "path": "machine_learning/SupportVectorMachines/Basic+SVC+Implementation.ipynb",
+                "type": "other",
+                "ext": "ipynb",
+                "size": 38185,
+                "title": "Support Vector Classifier Implementation"
+              },
+              {
+                "name": "Support+Vector+Regression+Implementation.ipynb",
+                "path": "machine_learning/SupportVectorMachines/Support+Vector+Regression+Implementation.ipynb",
+                "type": "other",
+                "ext": "ipynb",
+                "size": 47472
+              },
+              {
+                "name": "SVM+Kernels+Implementation.ipynb",
+                "path": "machine_learning/SupportVectorMachines/SVM+Kernels+Implementation.ipynb",
+                "type": "other",
+                "ext": "ipynb",
+                "size": 3818824,
+                "title": "SVM Kernels Indepth Intuition And Practical Explanation",
+                "excerpt": "![image.png](attachment:image.png)"
+              }
+            ]
+          },
+          {
             "name": "UnsupervisedLearning",
             "path": "machine_learning/UnsupervisedLearning",
             "folders": [
               {
-                "name": "AnomalyDetectionMahcineLearningAlgrithms",
+                "name": "Anomaly Detection — Complete Notes",
                 "path": "machine_learning/UnsupervisedLearning/AnomalyDetectionMahcineLearningAlgrithms",
+                "description": "Topic: Anomaly / Outlier Detection using Unsupervised Machine Learning Perspective: Theory + Geometric Intuition + Mathematical Intuition + Scikitlearn Implementation Source basis:",
                 "folders": [],
                 "files": [
                   {
@@ -352,6 +564,15 @@
                     "ext": "ipynb",
                     "size": 54924,
                     "title": "Isolation Forest Anomaly Detection"
+                  },
+                  {
+                    "name": "README.md",
+                    "path": "machine_learning/UnsupervisedLearning/AnomalyDetectionMahcineLearningAlgrithms/README.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 36360,
+                    "title": "Anomaly Detection — Complete Notes",
+                    "excerpt": "Topic: Anomaly / Outlier Detection using Unsupervised Machine Learning Perspective: Theory + Geometric Intuition + Mathematical Intuition + Scikitlearn Implementation Source basis:"
                   }
                 ]
               },
@@ -373,6 +594,15 @@
                     "type": "other",
                     "ext": "ipynb",
                     "size": 115024
+                  },
+                  {
+                    "name": "README_DBSCAN.md",
+                    "path": "machine_learning/UnsupervisedLearning/DBScan/README_DBSCAN.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 28028,
+                    "title": "DBSCAN Clustering — Complete Notes",
+                    "excerpt": "Topic: DBSCAN (DensityBased Spatial Clustering of Applications with Noise) Perspective: Theory + intuition + eps + minsamples + core/border/noise points + density reachability + no"
                   }
                 ]
               },
@@ -401,6 +631,15 @@
                     "type": "pdf",
                     "ext": "pdf",
                     "size": 1508379
+                  },
+                  {
+                    "name": "README_Hierarchical_Clustering.md",
+                    "path": "machine_learning/UnsupervisedLearning/HierarchalClustering/README_Hierarchical_Clustering.md",
+                    "type": "markdown",
+                    "ext": "md",
+                    "size": 36525,
+                    "title": "Hierarchical Clustering — Complete Notes",
+                    "excerpt": "Topic: Hierarchical Clustering Perspective: Theory + Geometric Intuition + Dendrogram + Agglomerative/Divisive Clustering + Distance + Threshold + Silhouette Validation + Python Im"
                   }
                 ]
               },
@@ -609,6 +848,268 @@
           }
         ],
         "files": []
+      },
+      {
+        "name": "Natural Language Processing",
+        "path": "NLP",
+        "description": "Natural Language Processing for Machine Learning — full course notes, from tokenization to Word2Vec, with runnable notebooks and two end-to-end projects.",
+        "folders": [
+          {
+            "name": "Notebooks",
+            "path": "NLP/notebooks",
+            "folders": [],
+            "files": [
+              {
+                "name": "01-text-preprocessing.ipynb",
+                "path": "NLP/notebooks/01-text-preprocessing.ipynb",
+                "type": "other",
+                "ext": "ipynb",
+                "size": 27870,
+                "title": "01 — Text Pre-processing Workbench",
+                "excerpt": "Runnable companion to notes 03–08: tokenization, stemming, lemmatization, stopwords, POS tagging and named entity recognition. Run the cells top to bottom. Every block is selfconta"
+              },
+              {
+                "name": "02-text-to-vectors.ipynb",
+                "path": "NLP/notebooks/02-text-to-vectors.ipynb",
+                "type": "other",
+                "ext": "ipynb",
+                "size": 24910,
+                "title": "02 — Text to Vectors",
+                "excerpt": "Runnable companion to notes 09–12: onehot encoding, bag of words, ngrams and TFIDF. Every technique is computed twice — once by hand with NumPy so you can see the arithmetic, once "
+              },
+              {
+                "name": "03-word2vec-gensim.ipynb",
+                "path": "NLP/notebooks/03-word2vec-gensim.ipynb",
+                "type": "other",
+                "ext": "ipynb",
+                "size": 30514,
+                "title": "03 — Word2Vec with gensim",
+                "excerpt": "Runnable companion to notes 13–15: word embeddings, the pretrained Google model, training your own, CBOW vs Skipgram, and average Word2Vec. | Section | Note | ||| | 1. Setup | — | "
+              },
+              {
+                "name": "04-spam-ham-project.ipynb",
+                "path": "NLP/notebooks/04-spam-ham-project.ipynb",
+                "type": "other",
+                "ext": "ipynb",
+                "size": 27741,
+                "title": "04 — Project 1: SMS Spam/Ham Classification",
+                "excerpt": "Runnable companion to notes 16–17. Three vectorization strategies on the same 5,572 messages, compared honestly. | Section | | ||| | 1. Load the data | | | 2. Clean + encode labels"
+              },
+              {
+                "name": "05-kindle-sentiment-project.ipynb",
+                "path": "NLP/notebooks/05-kindle-sentiment-project.ipynb",
+                "type": "other",
+                "ext": "ipynb",
+                "size": 30968,
+                "title": "05 — Project 2: Kindle Review Sentiment Analysis",
+                "excerpt": "Runnable companion to note 18. 12,000 Amazon Kindle book reviews — messier text, a harder target, and a first model that scores 58%. This notebook is really about diagnosis. Gettin"
+              }
+            ]
+          },
+          {
+            "name": "Notes",
+            "path": "NLP/notes",
+            "folders": [],
+            "files": [
+              {
+                "name": "00-README-NLP-Index.md",
+                "path": "NLP/notes/00-README-NLP-Index.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 11239,
+                "title": "00 — NLP Study Index: The Whole Subject in One Story",
+                "excerpt": "Read this page top to bottom and you already understand what NLP for machine learning is about and how every other note fits into it."
+              },
+              {
+                "name": "01-NLP-Roadmap-and-Applications.md",
+                "path": "NLP/notes/01-NLP-Roadmap-and-Applications.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 8291,
+                "title": "01 — NLP Roadmap & Real-World Applications",
+                "excerpt": "The bottom-to-top learning path from Python to BERT, why each rung exists, and the NLP you already use every day without noticing."
+              },
+              {
+                "name": "02-Core-Terminology.md",
+                "path": "NLP/notes/02-Core-Terminology.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 5965,
+                "title": "02 — Core Terminology: Corpus, Document, Vocabulary, Word",
+                "excerpt": "The four words that appear in every other note, defined precisely with a worked counting example."
+              },
+              {
+                "name": "03-Tokenization.md",
+                "path": "NLP/notes/03-Tokenization.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 8164,
+                "title": "03 — Tokenization",
+                "excerpt": "Paragraph → sentences → words. All five NLTK tokenizers compared on the same input, with the exact output differences spelled out."
+              },
+              {
+                "name": "04-Stemming.md",
+                "path": "NLP/notes/04-Stemming.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 8521,
+                "title": "04 — Stemming",
+                "excerpt": "Chopping words down to a word stem. Porter vs Snowball vs RegexpStemmer compared on the same words, plus exactly why history becomes histori."
+              },
+              {
+                "name": "05-Lemmatization.md",
+                "path": "NLP/notes/05-Lemmatization.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 8721,
+                "title": "05 — Lemmatization",
+                "excerpt": "WordNetLemmatizer, why the POS tag changes the answer completely, and the speed trade-off against stemming."
+              },
+              {
+                "name": "06-Stopwords-and-Cleaning-Pipeline.md",
+                "path": "NLP/notes/06-Stopwords-and-Cleaning-Pipeline.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 11175,
+                "title": "06 — Stopwords & the Full Cleaning Pipeline",
+                "excerpt": "What stopwords are, the one case where removing them destroys your model, and the reusable cleaning function used by every project in this course."
+              },
+              {
+                "name": "07-POS-Tagging.md",
+                "path": "NLP/notes/07-POS-Tagging.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 8878,
+                "title": "07 — Parts of Speech (POS) Tagging",
+                "excerpt": "The full Penn Treebank tag list, how nltk.pos_tag works, the list-vs-string mistake everyone makes, and why lemmatization depends on it."
+              },
+              {
+                "name": "08-Named-Entity-Recognition.md",
+                "path": "NLP/notes/08-Named-Entity-Recognition.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 9651,
+                "title": "08 — Named Entity Recognition (NER)",
+                "excerpt": "Pulling people, organisations, places, dates and money out of raw text with ne_chunk — plus how to turn the tree into a usable list."
+              },
+              {
+                "name": "09-One-Hot-Encoding.md",
+                "path": "NLP/notes/09-One-Hot-Encoding.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 8613,
+                "title": "09 — One-Hot Encoding",
+                "excerpt": "The naive way to turn words into vectors, computed by hand, plus the four specific failures that motivate every technique that follows."
+              },
+              {
+                "name": "10-Bag-of-Words.md",
+                "path": "NLP/notes/10-Bag-of-Words.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 12404,
+                "title": "10 — Bag of Words",
+                "excerpt": "One vector per document instead of per word. Hand-worked example, CountVectorizer in full, binary vs count mode, max_features, and the two problems it still cannot solve."
+              },
+              {
+                "name": "11-N-Grams.md",
+                "path": "NLP/notes/11-N-Grams.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 9271,
+                "title": "11 — N-Grams",
+                "excerpt": "How ngram_range rescues 'not good' from looking like 'good', with the full vector comparison and a tuning strategy."
+              },
+              {
+                "name": "12-TF-IDF.md",
+                "path": "NLP/notes/12-TF-IDF.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 12377,
+                "title": "12 — TF-IDF (Term Frequency × Inverse Document Frequency)",
+                "excerpt": "Weighting words by how informative they are. Full hand calculation, then the exact reason sklearn's numbers look different from yours."
+              },
+              {
+                "name": "13-Word-Embeddings-and-Word2Vec.md",
+                "path": "NLP/notes/13-Word-Embeddings-and-Word2Vec.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 14034,
+                "title": "13 — Word Embeddings & Word2Vec",
+                "excerpt": "Feature representation, dense vectors, cosine similarity, and why king − man + woman ≈ queen actually works."
+              },
+              {
+                "name": "14-CBOW-and-SkipGram.md",
+                "path": "NLP/notes/14-CBOW-and-SkipGram.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 15470,
+                "title": "14 — CBOW & Skip-gram: How Word2Vec Is Actually Trained",
+                "excerpt": "The neural network behind Word2Vec, layer by layer, with the training pairs built by hand — plus a correction to a very common misconception about window size."
+              },
+              {
+                "name": "15-Average-Word2Vec.md",
+                "path": "NLP/notes/15-Average-Word2Vec.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 14105,
+                "title": "15 — Average Word2Vec",
+                "excerpt": "Word2Vec gives one vector per word, but classifiers need one per sentence. The averaging step, its implementation, its pitfalls, and the better alternatives."
+              },
+              {
+                "name": "16-Best-Practices-and-Data-Leakage.md",
+                "path": "NLP/notes/16-Best-Practices-and-Data-Leakage.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 11507,
+                "title": "16 — Best Practices & Data Leakage",
+                "excerpt": "The single most common mistake in NLP pipelines — vectorizing before splitting — why it inflates your accuracy, and the Pipeline that makes it impossible."
+              },
+              {
+                "name": "17-Project-Spam-Ham-Classification.md",
+                "path": "NLP/notes/17-Project-Spam-Ham-Classification.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 15107,
+                "title": "17 — Project 1: SMS Spam/Ham Classification",
+                "excerpt": "End-to-end classification of 5,572 SMS messages with Bag of Words, TF-IDF and Average Word2Vec compared, including the row-mismatch bug and how to find it."
+              },
+              {
+                "name": "18-Project-Kindle-Review-Sentiment.md",
+                "path": "NLP/notes/18-Project-Kindle-Review-Sentiment.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 15574,
+                "title": "18 — Project 2: Kindle Review Sentiment Analysis",
+                "excerpt": "A messier 12,000-review dataset with URLs, HTML and emails. Production-grade cleaning, the space-vs-empty-string bug, and a full diagnosis of why the first model scores only 58%."
+              }
+            ]
+          }
+        ],
+        "files": [
+          {
+            "name": "finalNLP.pdf",
+            "path": "NLP/finalNLP.pdf",
+            "type": "pdf",
+            "ext": "pdf",
+            "size": 7247828
+          },
+          {
+            "name": "README.md",
+            "path": "NLP/README.md",
+            "type": "markdown",
+            "ext": "md",
+            "size": 1000,
+            "title": "Natural Language Processing",
+            "excerpt": "Natural Language Processing for Machine Learning — full course notes, from tokenization to Word2Vec, with runnable notebooks and two end-to-end projects."
+          },
+          {
+            "name": "transcript.txt",
+            "path": "NLP/transcript.txt",
+            "type": "other",
+            "ext": "txt",
+            "size": 389360
+          }
+        ]
       },
       {
         "name": "Python Basics",
@@ -878,12 +1379,12 @@
     ]
   },
   "stats": {
-    "folders": 18,
-    "files": 93,
+    "folders": 25,
+    "files": 145,
     "videos": 0,
-    "markdown": 14,
-    "pdfs": 13,
+    "markdown": 49,
+    "pdfs": 20,
     "images": 10,
-    "other": 56
+    "other": 66
   }
 }

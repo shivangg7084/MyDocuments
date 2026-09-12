@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T02:32:26.509Z",
+  "generatedAt": "2026-09-12T11:07:58.100Z",
   "root": {
     "name": "Home",
     "path": "",
@@ -188,6 +188,43 @@
             "excerpt": "The three slides you shared cover a large part of the probability and statistics foundation needed for Machine Learning and Data Science. The topics can be understood as one connec"
           }
         ]
+      },
+      {
+        "name": "Fundamentals",
+        "path": "Fundamentals",
+        "folders": [
+          {
+            "name": "01-DBMS Foundations — Architecture, Abstraction, Data Models & ER Modelling",
+            "path": "Fundamentals/DBMS",
+            "description": "GATE CSE study module built from lectures 1–5 of the DBMS course — data/database/DBMS, why file systems fail, schema vs instance, three-level abstraction, database languages and users, data models, the design lifecycle, and the extended ER model (specialization, generalization, aggregation, attribute types).",
+            "folders": [],
+            "files": [
+              {
+                "name": "README.md",
+                "path": "Fundamentals/DBMS/README.md",
+                "type": "markdown",
+                "ext": "md",
+                "size": 183860,
+                "title": "01-DBMS Foundations — Architecture, Abstraction, Data Models & ER Modelling",
+                "excerpt": "GATE CSE study module built from lectures 1–5 of the DBMS course — data/database/DBMS, why file systems fail, schema vs instance, three-level abstraction, database languages and users, data models, the design lifecycle, and the extended ER model (specialization, generalization, aggregation, attribute types)."
+              },
+              {
+                "name": "transcript.txt",
+                "path": "Fundamentals/DBMS/transcript.txt",
+                "type": "other",
+                "ext": "txt",
+                "size": 485673
+              }
+            ]
+          },
+          {
+            "name": "Maths",
+            "path": "Fundamentals/Maths",
+            "folders": [],
+            "files": []
+          }
+        ],
+        "files": []
       },
       {
         "name": "Getting Started",
@@ -1101,13 +1138,6 @@
             "size": 1000,
             "title": "Natural Language Processing",
             "excerpt": "Natural Language Processing for Machine Learning — full course notes, from tokenization to Word2Vec, with runnable notebooks and two end-to-end projects."
-          },
-          {
-            "name": "transcript.txt",
-            "path": "NLP/transcript.txt",
-            "type": "other",
-            "ext": "txt",
-            "size": 389360
           }
         ]
       },
@@ -1379,10 +1409,10 @@
     ]
   },
   "stats": {
-    "folders": 25,
-    "files": 145,
+    "folders": 28,
+    "files": 146,
     "videos": 0,
-    "markdown": 49,
+    "markdown": 50,
     "pdfs": 20,
     "images": 10,
     "other": 66
